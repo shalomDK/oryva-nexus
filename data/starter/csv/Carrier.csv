@@ -1,0 +1,9 @@
+carrier_id,carrier_name,mode,sourcing_region
+CAR-01,Carrier 01 Road,ROAD,LOCAL
+CAR-02,Carrier 02 Road,ROAD,REGIONAL
+CAR-03,Carrier 03 Road,ROAD,LOCAL
+CAR-04,Carrier 04 Rail,RAIL,REGIONAL
+CAR-05,Carrier 05 Sea,SEA,OVERSEAS
+CAR-06,Carrier 06 Sea,SEA,OVERSEAS
+CAR-07,Carrier 07 Air,AIR,OVERSEAS
+CAR-08,Carrier 08 Air,AIR,OVERSEAS

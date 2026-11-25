@@ -1,0 +1,32 @@
+﻿# FULL profile = the baseline volumes required by the assignment (PDF section 5, Step 4).
+name: full
+seed: 20261022
+as_of_date: "2025-12-29"        # Monday of 2026W01 (fixed; never wall-clock)
+n_skus: 3000
+n_locations: 50
+n_weeks: 52
+n_suppliers: 500
+n_purchase_orders: 10000        # total inbound orders in the exported PurchaseOrder table
+assortment_density: 0.10        # share of the SKU x Location cross-product that is stocked (CONFIGURABLE)
+inactive_pair_share: 0.02       # share of stocked pairs that are INACTIVE (no demand rows)
+n_families: 12
+sku_mix: {make: 0.20, component: 0.20}   # remainder = bought finished goods
+location_mix: {plant: 0.12, dc: 0.18}    # remainder = stores
+scenario:
+  spike_pair_share: 0.05         # SKU-locations with an unplanned demand spike (labelled SCENARIO)
+  promo_pair_share: 0.08
+  constrained_supplier_share: 0.12
+  delay_share: 0.35              # share of shipped POs with a transport delay
+  tight_pair_share: 0.03         # pairs deliberately under-covered by the plan
+  substitute_share: 0.12
+  cancelled_po_share: 0.015
+  historic_po_share: 0.06        # POs already received before as_of
+  early_arrival_share: 0.30       # share of pairs whose first PO arrives in weeks 1-8 (in transit at as_of)
+  constrained_work_center_share: 0.25
+edge_cases:
+  per_type: 30
+json_max_rows: 200000
+
+
+
+

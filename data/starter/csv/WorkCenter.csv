@@ -1,0 +1,5 @@
+work_center_id,location_id,work_center_name,status
+WC-LOC-008-01,LOC-008,Line 1,ACTIVE
+WC-LOC-008-02,LOC-008,Line 2,ACTIVE
+WC-LOC-010-01,LOC-010,Line 1,ACTIVE
+WC-LOC-010-02,LOC-010,Line 2,ACTIVE

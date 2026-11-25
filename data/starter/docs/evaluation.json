@@ -1,0 +1,182 @@
+{
+  "all_decisions_ok": true,
+  "all_detection_perfect": true,
+  "all_validator_reconciled": true,
+  "decisions": [
+    {
+      "all_as_expected": true,
+      "cases": 4,
+      "decision": "FLAG_AND_BLOCK_MITIGATION",
+      "issue_type": "SHORTAGE_MISSING_LEAD_TIME"
+    },
+    {
+      "all_as_expected": true,
+      "cases": 4,
+      "decision": "REJECT_OPTION_NEVER_RECOMMEND",
+      "issue_type": "SUBSTITUTE_NOT_APPROVED"
+    },
+    {
+      "all_as_expected": true,
+      "cases": 6,
+      "decision": "EXCLUDE_DUPLICATE",
+      "issue_type": "INBOUND_DOUBLE_COUNT"
+    },
+    {
+      "all_as_expected": true,
+      "cases": 4,
+      "decision": "USE_CONVERTED_QUANTITY",
+      "issue_type": "UOM_MISMATCH"
+    },
+    {
+      "all_as_expected": true,
+      "cases": 4,
+      "decision": "FLAG_AND_LIMIT_MITIGATION_CAPACITY",
+      "issue_type": "SUPPLIER_CAPACITY_EXCEEDED"
+    }
+  ],
+  "detection": [
+    {
+      "boundary_cases": 1,
+      "boundary_wrongly_flagged": 0,
+      "engine_flagged": 6,
+      "false_negative": 0,
+      "false_positive": 0,
+      "issue_type": "INBOUND_DOUBLE_COUNT",
+      "labelled": 6,
+      "precision": 1.0,
+      "recall": 1.0,
+      "true_positive": 6
+    },
+    {
+      "boundary_cases": 0,
+      "boundary_wrongly_flagged": 0,
+      "engine_flagged": 4,
+      "false_negative": 0,
+      "false_positive": 0,
+      "issue_type": "SUBSTITUTE_NOT_APPROVED",
+      "labelled": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "true_positive": 4
+    },
+    {
+      "boundary_cases": 1,
+      "boundary_wrongly_flagged": 0,
+      "engine_flagged": 4,
+      "false_negative": 0,
+      "false_positive": 0,
+      "issue_type": "SUPPLIER_CAPACITY_EXCEEDED",
+      "labelled": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "true_positive": 4
+    },
+    {
+      "boundary_cases": 0,
+      "boundary_wrongly_flagged": 0,
+      "engine_flagged": 6,
+      "false_negative": 0,
+      "false_positive": 0,
+      "issue_type": "SHORTAGE_MISSING_LEAD_TIME",
+      "labelled": 6,
+      "precision": 1.0,
+      "recall": 1.0,
+      "true_positive": 6
+    },
+    {
+      "boundary_cases": 0,
+      "boundary_wrongly_flagged": 0,
+      "engine_flagged": 4,
+      "false_negative": 0,
+      "false_positive": 0,
+      "issue_type": "UOM_MISMATCH",
+      "labelled": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "true_positive": 4
+    }
+  ],
+  "kpis": {
+    "by_primary_cause": {
+      "DEMAND_SPIKE": 26,
+      "INBOUND_CANCELLED": 11,
+      "INBOUND_LATE_SUPPLIER": 6,
+      "INBOUND_LATE_TRANSPORT": 6,
+      "INBOUND_QTY_SHORTFALL": 34,
+      "NO_INBOUND_PLANNED": 3,
+      "PRODUCTION_CAPACITY": 6
+    },
+    "by_status": {
+      "MITIGATION_PROPOSED": 85,
+      "NEEDS_REVIEW": 7
+    },
+    "by_type": {
+      "SAFETY_STOCK_BREACH": 30,
+      "STOCKOUT": 62
+    },
+    "data_quality_findings": {
+      "INBOUND_DOUBLE_COUNT": 6,
+      "SHORTAGE_MISSING_LEAD_TIME": 6,
+      "SUBSTITUTE_NOT_APPROVED": 4,
+      "SUPPLIER_CAPACITY_EXCEEDED": 4,
+      "UOM_MISMATCH": 4
+    },
+    "do_nothing_backorder_cost_usd": 1255520.44,
+    "mean_recommended_fill_rate_pct": 97.52,
+    "pct_shortages_with_2plus_options": 100.0,
+    "pct_shortages_with_cause": 100.0,
+    "recommended_incremental_cost_usd": 13921.37,
+    "recommended_option_mix": {
+      "ALT_SUPPLIER_PO": 7,
+      "EXPEDITE_PO": 4,
+      "LOCATION_TRANSFER": 35,
+      "NEW_PO": 38,
+      "PRODUCTION_REPLAN": 7,
+      "SUBSTITUTE_SKU": 1
+    },
+    "shortages": 92,
+    "value_at_risk_usd": 746370.95
+  },
+  "validator_reconciliation": [
+    {
+      "exact_match": true,
+      "issue_type": "INBOUND_DOUBLE_COUNT",
+      "labelled": 6,
+      "missing": 0,
+      "unexpected": 0,
+      "validator_flagged": 6
+    },
+    {
+      "exact_match": true,
+      "issue_type": "SUBSTITUTE_NOT_APPROVED",
+      "labelled": 4,
+      "missing": 0,
+      "unexpected": 0,
+      "validator_flagged": 4
+    },
+    {
+      "exact_match": true,
+      "issue_type": "SUPPLIER_CAPACITY_EXCEEDED",
+      "labelled": 4,
+      "missing": 0,
+      "unexpected": 0,
+      "validator_flagged": 4
+    },
+    {
+      "exact_match": true,
+      "issue_type": "SHORTAGE_MISSING_LEAD_TIME",
+      "labelled": 6,
+      "missing": 0,
+      "unexpected": 0,
+      "validator_flagged": 6
+    },
+    {
+      "exact_match": true,
+      "issue_type": "UOM_MISMATCH",
+      "labelled": 4,
+      "missing": 0,
+      "unexpected": 0,
+      "validator_flagged": 4
+    }
+  ]
+}

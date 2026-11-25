@@ -1,0 +1,23 @@
+# Planning policy parameters (documented business rules; recorded on every PlanRun via a hash).
+version: 1
+expedite_premium_pct: 12
+expedite_premium_cap_pct: 25
+expedite_max_days_gain: 14
+expedite_min_days: 2
+freight_pct: {LOCAL: 2.0, REGIONAL: 3.0, OVERSEAS: 6.0}
+expedite_freight_pct: 2.0
+transfer_freight_pct: {same_region: 1.5, other_region: 3.0}
+transfer_lead_days: {same_region: 4, other_region: 9}
+production_changeover_pct: 5.0
+production_frozen_weeks: 2
+holding_cost_pct_excess: 25
+backorder_cost_pct_per_week: 8
+approval_spend_threshold: 25000
+max_alt_suppliers: 2
+max_transfer_donors: 2
+max_expedite_pos: 2
+supplier_util_constrained_pct: 90
+priority_weights: {urgency: 0.35, value: 0.30, criticality: 0.20, service_gap: 0.15}
+criticality_weight: {A: 1.0, B: 0.6, C: 0.3}
+# A missing lead time is NEVER silently defaulted (assignment edge case 4).
+missing_lead_time_fallback_days: null

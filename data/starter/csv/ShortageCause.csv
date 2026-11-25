@@ -1,0 +1,97 @@
+shortage_id,cause_seq,cause_code,contribution_qty,source_table,source_id,explanation
+SHORT-2026-000001,1,INBOUND_LATE_SUPPLIER,6,PurchaseOrder,PO-2026-000150,PO PO-2026-000150 promised after need week 2026W09 (supplier utilisation 41%)
+SHORT-2026-000002,1,DEMAND_SPIKE,50,ForecastDemand,DEM-SKU-000008-LOC-004-2026W25,forecast 75 vs median 18
+SHORT-2026-000003,1,DEMAND_SPIKE,49,ForecastDemand,DEM-SKU-000008-LOC-004-2026W25,forecast 75 vs median 18
+SHORT-2026-000004,1,DEMAND_SPIKE,6,ForecastDemand,DEM-SKU-000008-LOC-007-2026W46,forecast 37 vs median 20
+SHORT-2026-000005,1,INBOUND_QTY_SHORTFALL,5,Inventory,INV-SKU-000010-LOC-002,open inbound quantity below forecast + safety stock
+SHORT-2026-000006,1,INBOUND_QTY_SHORTFALL,282,Inventory,INV-SKU-000010-LOC-002,open inbound quantity below forecast + safety stock
+SHORT-2026-000007,1,DEMAND_SPIKE,7,ForecastDemand,DEM-SKU-000027-LOC-007-2026W03,forecast 12 vs median 4
+SHORT-2026-000008,1,INBOUND_CANCELLED,391,PurchaseOrder,PO-2026-000741,PO PO-2026-000741 was cancelled
+SHORT-2026-000009,1,NO_INBOUND_PLANNED,33,Inventory,INV-SKU-000034-LOC-001,no open inbound order covers the need
+SHORT-2026-000010,1,INBOUND_LATE_SUPPLIER,17,PurchaseOrder,PO-2026-000184,PO PO-2026-000184 promised after need week 2026W04 (supplier utilisation 23%)
+SHORT-2026-000011,1,INBOUND_LATE_TRANSPORT,93,PurchaseOrder,PO-2026-000047,PO PO-2026-000047 ETA 2026-01-30 slipped past need week 2026W04 due to transport delay
+SHORT-2026-000012,1,INBOUND_LATE_SUPPLIER,42,PurchaseOrder,PO-2026-000087,PO PO-2026-000087 promised after need week 2026W01 (supplier utilisation 11%)
+SHORT-2026-000013,1,INBOUND_CANCELLED,2054,PurchaseOrder,PO-2026-000535,PO PO-2026-000535 was cancelled
+SHORT-2026-000014,1,NO_INBOUND_PLANNED,47,Inventory,INV-SKU-000051-LOC-008,no open inbound order covers the need
+SHORT-2026-000015,1,INBOUND_CANCELLED,284,PurchaseOrder,PO-2026-000439,PO PO-2026-000439 was cancelled
+SHORT-2026-000016,1,DEMAND_SPIKE,27,ForecastDemand,DEM-SKU-000061-LOC-004-2026W02,forecast 73 vs median 33
+SHORT-2026-000017,1,DEMAND_SPIKE,6,ForecastDemand,DEM-SKU-000061-LOC-004-2026W02,forecast 73 vs median 33
+SHORT-2026-000018,1,DEMAND_SPIKE,32,ForecastDemand,DEM-SKU-000067-LOC-006-2026W03,forecast 54 vs median 8
+SHORT-2026-000019,1,DEMAND_SPIKE,40,ForecastDemand,DEM-SKU-000067-LOC-006-2026W03,forecast 54 vs median 8
+SHORT-2026-000020,1,DEMAND_SPIKE,6,ForecastDemand,DEM-SKU-000067-LOC-009-2026W15,forecast 10 vs median 4
+SHORT-2026-000020,2,DEMAND_SPIKE,1,ForecastDemand,DEM-SKU-000067-LOC-009-2026W32,forecast 10 vs median 4
+SHORT-2026-000021,1,INBOUND_LATE_SUPPLIER,3,PurchaseOrder,PO-2026-000293,PO PO-2026-000293 promised after need week 2026W07 (supplier utilisation 8%)
+SHORT-2026-000022,1,INBOUND_CANCELLED,300,PurchaseOrder,PO-2026-000565,PO PO-2026-000565 was cancelled
+SHORT-2026-000023,1,DEMAND_SPIKE,26,ForecastDemand,DEM-SKU-000079-LOC-006-2026W51,forecast 75 vs median 20
+SHORT-2026-000024,1,INBOUND_LATE_TRANSPORT,16,PurchaseOrder,PO-2026-000049,PO PO-2026-000049 ETA 2026-01-19 slipped past need week 2026W03 due to transport delay
+SHORT-2026-000025,1,INBOUND_QTY_SHORTFALL,27,Inventory,INV-SKU-000082-LOC-010,open inbound quantity below forecast + safety stock
+SHORT-2026-000026,1,INBOUND_QTY_SHORTFALL,308,Inventory,INV-SKU-000088-LOC-006,open inbound quantity below forecast + safety stock
+SHORT-2026-000027,1,INBOUND_QTY_SHORTFALL,257,Inventory,INV-SKU-000095-LOC-006,open inbound quantity below forecast + safety stock
+SHORT-2026-000028,1,INBOUND_CANCELLED,1175,PurchaseOrder,PO-2026-000556,PO PO-2026-000556 was cancelled
+SHORT-2026-000029,1,INBOUND_CANCELLED,1919,PurchaseOrder,PO-2026-000335,PO PO-2026-000335 was cancelled
+SHORT-2026-000030,1,INBOUND_CANCELLED,1704,PurchaseOrder,PO-2026-000335,PO PO-2026-000335 was cancelled
+SHORT-2026-000031,1,DEMAND_SPIKE,1,ForecastDemand,DEM-SKU-000101-LOC-007-2026W28,forecast 12 vs median 5
+SHORT-2026-000032,1,INBOUND_CANCELLED,429,PurchaseOrder,PO-2026-000200,PO PO-2026-000200 was cancelled
+SHORT-2026-000033,1,DEMAND_SPIKE,5,ForecastDemand,DEM-SKU-000106-LOC-010-2026W29,forecast 24 vs median 8
+SHORT-2026-000034,1,DEMAND_SPIKE,3,ForecastDemand,DEM-SKU-000106-LOC-010-2026W29,forecast 24 vs median 8
+SHORT-2026-000035,1,DEMAND_SPIKE,2,ForecastDemand,DEM-SKU-000106-LOC-010-2026W29,forecast 24 vs median 8
+SHORT-2026-000036,1,DEMAND_SPIKE,1,ForecastDemand,DEM-SKU-000106-LOC-010-2026W29,forecast 24 vs median 8
+SHORT-2026-000037,1,DEMAND_SPIKE,3,ForecastDemand,DEM-SKU-000106-LOC-010-2026W29,forecast 24 vs median 8
+SHORT-2026-000038,1,DEMAND_SPIKE,4,ForecastDemand,DEM-SKU-000122-LOC-002-2026W07,forecast 14 vs median 4
+SHORT-2026-000039,1,INBOUND_LATE_SUPPLIER,15,PurchaseOrder,PO-2026-000098,PO PO-2026-000098 promised after need week 2026W07 (supplier utilisation 61%)
+SHORT-2026-000040,1,PRODUCTION_CAPACITY,6,ProductionPlan,PP-2026-000713,plan PP-2026-000713 reduced/cancelled (production_capacity)
+SHORT-2026-000041,1,INBOUND_CANCELLED,1414,PurchaseOrder,PO-2026-000722,PO PO-2026-000722 was cancelled
+SHORT-2026-000042,1,DEMAND_SPIKE,32,ForecastDemand,DEM-SKU-000134-LOC-007-2026W14,forecast 382 vs median 134
+SHORT-2026-000043,1,INBOUND_QTY_SHORTFALL,2,Inventory,INV-SKU-000138-LOC-006,open inbound quantity below forecast + safety stock
+SHORT-2026-000044,1,INBOUND_QTY_SHORTFALL,55,Inventory,INV-SKU-000138-LOC-006,open inbound quantity below forecast + safety stock
+SHORT-2026-000045,1,DEMAND_SPIKE,5,ForecastDemand,DEM-SKU-000138-LOC-009-2026W32,forecast 22 vs median 6
+SHORT-2026-000046,1,DEMAND_SPIKE,27,ForecastDemand,DEM-SKU-000142-LOC-001-2026W20,forecast 42 vs median 14
+SHORT-2026-000047,1,INBOUND_QTY_SHORTFALL,65,Inventory,INV-SKU-000145-LOC-008,open inbound quantity below forecast + safety stock
+SHORT-2026-000048,1,INBOUND_LATE_TRANSPORT,53,PurchaseOrder,PO-2026-000042,PO PO-2026-000042 ETA 2026-02-03 slipped past need week 2026W05 due to transport delay
+SHORT-2026-000049,1,DEMAND_SPIKE,3,ForecastDemand,DEM-SKU-000154-LOC-001-2026W24,forecast 52 vs median 23
+SHORT-2026-000050,1,INBOUND_QTY_SHORTFALL,3,Inventory,INV-SKU-000157-LOC-010,open inbound quantity below forecast + safety stock
+SHORT-2026-000051,1,INBOUND_QTY_SHORTFALL,76,Inventory,INV-SKU-000157-LOC-010,open inbound quantity below forecast + safety stock
+SHORT-2026-000052,1,INBOUND_QTY_SHORTFALL,62,Inventory,INV-SKU-000163-LOC-010,open inbound quantity below forecast + safety stock
+SHORT-2026-000053,1,INBOUND_QTY_SHORTFALL,139,Inventory,INV-SKU-000163-LOC-010,open inbound quantity below forecast + safety stock
+SHORT-2026-000054,1,NO_INBOUND_PLANNED,122,Inventory,INV-SKU-000164-LOC-007,no open inbound order covers the need
+SHORT-2026-000055,1,INBOUND_QTY_SHORTFALL,51,Inventory,INV-SKU-000169-LOC-010,open inbound quantity below forecast + safety stock
+SHORT-2026-000056,1,INBOUND_QTY_SHORTFALL,295,Inventory,INV-SKU-000169-LOC-010,open inbound quantity below forecast + safety stock
+SHORT-2026-000057,1,INBOUND_QTY_SHORTFALL,521,Inventory,INV-SKU-000169-LOC-010,open inbound quantity below forecast + safety stock
+SHORT-2026-000058,1,INBOUND_QTY_SHORTFALL,700,Inventory,INV-SKU-000169-LOC-010,open inbound quantity below forecast + safety stock
+SHORT-2026-000059,1,INBOUND_LATE_TRANSPORT,164,PurchaseOrder,PO-2026-000079,PO PO-2026-000079 ETA 2026-02-24 slipped past need week 2026W08 due to transport delay
+SHORT-2026-000060,1,DEMAND_SPIKE,5,ForecastDemand,DEM-SKU-000178-LOC-006-2026W20,forecast 77 vs median 33
+SHORT-2026-000061,1,INBOUND_QTY_SHORTFALL,157,Inventory,INV-SKU-000182-LOC-008,open inbound quantity below forecast + safety stock
+SHORT-2026-000062,1,INBOUND_QTY_SHORTFALL,403,Inventory,INV-SKU-000204-LOC-004,open inbound quantity below forecast + safety stock
+SHORT-2026-000063,1,INBOUND_LATE_TRANSPORT,6,PurchaseOrder,PO-2026-000041,PO PO-2026-000041 ETA 2026-01-18 slipped past need week 2026W02 due to transport delay
+SHORT-2026-000064,1,INBOUND_QTY_SHORTFALL,37,Inventory,INV-SKU-000237-LOC-008,open inbound quantity below forecast + safety stock
+SHORT-2026-000065,1,INBOUND_QTY_SHORTFALL,140,Inventory,INV-SKU-000237-LOC-008,open inbound quantity below forecast + safety stock
+SHORT-2026-000066,1,INBOUND_CANCELLED,706,PurchaseOrder,PO-2026-000584,PO PO-2026-000584 was cancelled
+SHORT-2026-000067,1,INBOUND_QTY_SHORTFALL,250,Inventory,INV-SKU-000242-LOC-002,open inbound quantity below forecast + safety stock
+SHORT-2026-000068,1,INBOUND_QTY_SHORTFALL,1067,Inventory,INV-SKU-000242-LOC-002,open inbound quantity below forecast + safety stock
+SHORT-2026-000069,1,INBOUND_QTY_SHORTFALL,242,Inventory,INV-SKU-000242-LOC-003,open inbound quantity below forecast + safety stock
+SHORT-2026-000070,1,INBOUND_QTY_SHORTFALL,522,Inventory,INV-SKU-000242-LOC-003,open inbound quantity below forecast + safety stock
+SHORT-2026-000071,1,DEMAND_SPIKE,8,ForecastDemand,DEM-SKU-000244-LOC-009-2026W03,forecast 38 vs median 30
+SHORT-2026-000071,2,INBOUND_QTY_SHORTFALL,9,Inventory,INV-SKU-000244-LOC-009,open inbound quantity below forecast + safety stock
+SHORT-2026-000072,1,DEMAND_SPIKE,8,ForecastDemand,DEM-SKU-000244-LOC-009-2026W03,forecast 38 vs median 30
+SHORT-2026-000072,2,DEMAND_SPIKE,8,ForecastDemand,DEM-SKU-000244-LOC-009-2026W13,forecast 38 vs median 30
+SHORT-2026-000072,3,INBOUND_QTY_SHORTFALL,18,Inventory,INV-SKU-000244-LOC-009,open inbound quantity below forecast + safety stock
+SHORT-2026-000073,1,DEMAND_SPIKE,15,ForecastDemand,DEM-SKU-000255-LOC-001-2026W32,forecast 99 vs median 51
+SHORT-2026-000074,1,DEMAND_SPIKE,7,ForecastDemand,DEM-SKU-000255-LOC-001-2026W32,forecast 99 vs median 51
+SHORT-2026-000075,1,PRODUCTION_CAPACITY,21,ProductionPlan,PP-2026-002242,plan PP-2026-002242 reduced/cancelled (production_capacity)
+SHORT-2026-000076,1,PRODUCTION_CAPACITY,11,ProductionPlan,PP-2026-002242,plan PP-2026-002242 reduced/cancelled (production_capacity)
+SHORT-2026-000077,1,PRODUCTION_CAPACITY,12,ProductionPlan,PP-2026-002242,plan PP-2026-002242 reduced/cancelled (production_capacity)
+SHORT-2026-000078,1,PRODUCTION_CAPACITY,1,ProductionPlan,PP-2026-002242,plan PP-2026-002242 reduced/cancelled (production_capacity)
+SHORT-2026-000079,1,PRODUCTION_CAPACITY,3,ProductionPlan,PP-2026-002242,plan PP-2026-002242 reduced/cancelled (production_capacity)
+SHORT-2026-000080,1,INBOUND_LATE_TRANSPORT,279,PurchaseOrder,PO-2026-000104,PO PO-2026-000104 ETA 2026-01-07 slipped past need week 2026W01 due to transport delay
+SHORT-2026-000081,1,INBOUND_QTY_SHORTFALL,17,Inventory,INV-SKU-000266-LOC-002,open inbound quantity below forecast + safety stock
+SHORT-2026-000082,1,INBOUND_QTY_SHORTFALL,74,Inventory,INV-SKU-000266-LOC-002,open inbound quantity below forecast + safety stock
+SHORT-2026-000083,1,INBOUND_QTY_SHORTFALL,43,Inventory,INV-SKU-000270-LOC-002,open inbound quantity below forecast + safety stock
+SHORT-2026-000084,1,INBOUND_QTY_SHORTFALL,181,Inventory,INV-SKU-000270-LOC-002,open inbound quantity below forecast + safety stock
+SHORT-2026-000085,1,DEMAND_SPIKE,61,ForecastDemand,DEM-SKU-000274-LOC-006-2026W03,forecast 313 vs median 161
+SHORT-2026-000086,1,DEMAND_SPIKE,30,ForecastDemand,DEM-SKU-000274-LOC-006-2026W03,forecast 313 vs median 161
+SHORT-2026-000087,1,INBOUND_QTY_SHORTFALL,403,Inventory,INV-SKU-000274-LOC-007,open inbound quantity below forecast + safety stock
+SHORT-2026-000088,1,INBOUND_QTY_SHORTFALL,1287,Inventory,INV-SKU-000274-LOC-007,open inbound quantity below forecast + safety stock
+SHORT-2026-000089,1,INBOUND_QTY_SHORTFALL,254,Inventory,INV-SKU-000288-LOC-003,open inbound quantity below forecast + safety stock
+SHORT-2026-000090,1,INBOUND_QTY_SHORTFALL,154,Inventory,INV-SKU-000292-LOC-008,open inbound quantity below forecast + safety stock
+SHORT-2026-000091,1,INBOUND_LATE_SUPPLIER,2,PurchaseOrder,PO-2026-000255,PO PO-2026-000255 promised after need week 2026W06 (supplier utilisation 90%)
+SHORT-2026-000092,1,INBOUND_CANCELLED,1112,PurchaseOrder,PO-2026-000408,PO PO-2026-000408 was cancelled

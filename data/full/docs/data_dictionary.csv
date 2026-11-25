@@ -1,0 +1,291 @@
+table,table_kind,field,type,required,allowed_values,unit,uniqueness,validation_rule
+UnitOfMeasure,support,uom_code,str,required,"regex ^[A-Z]{2,5}$",-,PK (unique),"text; not null; matches ^[A-Z]{2,5}$"
+UnitOfMeasure,support,uom_name,str,required,free,-,-,text; not null
+UnitOfMeasure,support,uom_class,str,required,"COUNT, MASS",-,-,"text; not null; in {COUNT, MASS}"
+Location,core,location_id,str,required,regex ^LOC-\d{3}$,-,PK (unique),text; not null; matches ^LOC-\d{3}$
+Location,core,location_name,str,required,free,-,-,text; not null
+Location,core,location_type,str,required,"PLANT, DC, STORE",-,-,"text; not null; in {PLANT, DC, STORE}"
+Location,core,region,str,required,"NORTH, SOUTH, EAST, WEST, CENTRAL",-,-,"text; not null; in {NORTH, SOUTH, EAST, WEST, CENTRAL}"
+Location,core,country,str,required,free,-,-,text; not null
+Location,core,status,str,required,"ACTIVE, INACTIVE",-,-,"text; not null; in {ACTIVE, INACTIVE}"
+Location,core,effective_from,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+Location,core,effective_to,date,optional,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; may be empty; matches ^\d{4}-\d{2}-\d{2}$
+Carrier,support,carrier_id,str,required,regex ^CAR-\d{2}$,-,PK (unique),text; not null; matches ^CAR-\d{2}$
+Carrier,support,carrier_name,str,required,free,-,-,text; not null
+Carrier,support,mode,str,required,"ROAD, RAIL, SEA, AIR",-,-,"text; not null; in {ROAD, RAIL, SEA, AIR}"
+Carrier,support,sourcing_region,str,required,"LOCAL, REGIONAL, OVERSEAS",-,-,"text; not null; in {LOCAL, REGIONAL, OVERSEAS}"
+Supplier,core,supplier_id,str,required,regex ^SUP-\d{4}$,-,PK (unique),text; not null; matches ^SUP-\d{4}$
+Supplier,core,supplier_name,str,required,free,-,-,text; not null
+Supplier,core,country,str,required,free,-,-,text; not null
+Supplier,core,region,str,required,"LOCAL, REGIONAL, OVERSEAS",-,-,"text; not null; in {LOCAL, REGIONAL, OVERSEAS}"
+Supplier,core,tier,str,required,"STRATEGIC, PREFERRED, STANDARD",-,-,"text; not null; in {STRATEGIC, PREFERRED, STANDARD}"
+Supplier,core,status,str,required,"ACTIVE, ON_HOLD, INACTIVE",-,-,"text; not null; in {ACTIVE, ON_HOLD, INACTIVE}"
+Supplier,core,currency,str,required,USD,-,-,text; not null; in {USD}
+Supplier,core,payment_terms_days,int,required,free,days,-,integer; not null; >= 0; <= 180
+Supplier,core,onboarded_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+Supplier,core,effective_from,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+Supplier,core,effective_to,date,optional,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; may be empty; matches ^\d{4}-\d{2}-\d{2}$
+SKU,core,sku_id,str,required,regex ^SKU-\d{6}$,-,PK (unique),text; not null; matches ^SKU-\d{6}$
+SKU,core,sku_name,str,required,free,-,-,text; not null
+SKU,core,product_family,str,required,regex ^FAM-\d{2}$,-,-,text; not null; matches ^FAM-\d{2}$
+SKU,core,sku_type,str,required,"FINISHED_MAKE, FINISHED_BUY, COMPONENT",-,-,"text; not null; in {FINISHED_MAKE, FINISHED_BUY, COMPONENT}"
+SKU,core,base_uom,str,required,"EA, KG",-,-,"text; not null; in {EA, KG}; FK -> UnitOfMeasure.uom_code"
+SKU,core,unit_cost,float,required,free,USD/base UoM,-,decimal; not null; >= 0.01
+SKU,core,unit_price,float,required,free,USD/base UoM,-,decimal; not null; >= 0.01; unit_price >= unit_cost
+SKU,core,service_level_target,float,required,free,fraction,-,"decimal; not null; >= 0.5; <= 0.999; derived: by criticality: A=0.98,B=0.95,C=0.90"
+SKU,core,criticality,str,required,"A, B, C",-,-,"text; not null; in {A, B, C}; derived: ABC class from cumulative forecast revenue (80/15/5)"
+SKU,core,lifecycle_status,str,required,"NEW, ACTIVE, PHASING_OUT, DISCONTINUED",-,-,"text; not null; in {NEW, ACTIVE, PHASING_OUT, DISCONTINUED}"
+SKU,core,effective_from,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+SKU,core,effective_to,date,optional,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; may be empty; matches ^\d{4}-\d{2}-\d{2}$
+UoMConversion,support,conversion_id,str,required,regex ^UOMC-SKU-\d{6}-[A-Z]+$,-,PK (unique),text; not null; matches ^UOMC-SKU-\d{6}-[A-Z]+$
+UoMConversion,support,sku_id,str,required,free,-,-,text; not null; FK -> SKU.sku_id
+UoMConversion,support,from_uom,str,required,"CASE, BAG",-,-,"text; not null; in {CASE, BAG}; FK -> UnitOfMeasure.uom_code"
+UoMConversion,support,to_uom,str,required,"EA, KG",-,-,"text; not null; in {EA, KG}; FK -> UnitOfMeasure.uom_code"
+UoMConversion,support,factor,float,required,free,to_uom per from_uom,-,decimal; not null; >= 1; factor >= 1
+SKULocation,support,sku_id,str,required,free,-,PK part (composite unique),text; not null; FK -> SKU.sku_id
+SKULocation,support,location_id,str,required,free,-,PK part (composite unique),text; not null; FK -> Location.location_id
+SKULocation,support,stocking_status,str,required,"ACTIVE, INACTIVE",-,-,"text; not null; in {ACTIVE, INACTIVE}; ACTIVE pairs carry demand for all 52 weeks; INACTIVE pairs carry none"
+SKULocation,support,effective_from,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+SKULocation,support,effective_to,date,optional,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; may be empty; matches ^\d{4}-\d{2}-\d{2}$
+SKUSupplier,support,sku_id,str,required,free,-,PK part (composite unique),text; not null; FK -> SKU.sku_id
+SKUSupplier,support,supplier_id,str,required,free,-,PK part (composite unique),text; not null; FK -> Supplier.supplier_id
+SKUSupplier,support,is_preferred,int,required,"0, 1",-,-,"integer; not null; in {0, 1}"
+SKUSupplier,support,approval_status,str,required,"APPROVED, BLOCKED",-,-,"text; not null; in {APPROVED, BLOCKED}"
+SKUSupplier,support,unit_price,float,required,free,USD/base UoM,-,decimal; not null; >= 0.01
+SKUSupplier,support,effective_from,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+SKUSupplier,support,effective_to,date,optional,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; may be empty; matches ^\d{4}-\d{2}-\d{2}$
+SKUSubstitute,support,sku_id,str,required,free,-,PK part (composite unique),text; not null; FK -> SKU.sku_id
+SKUSubstitute,support,substitute_sku_id,str,required,free,-,PK part (composite unique),text; not null; FK -> SKU.sku_id; != sku_id
+SKUSubstitute,support,substitution_ratio,float,required,free,substitute units per original unit,-,decimal; not null; >= 0.5; <= 3
+SKUSubstitute,support,approval_status,str,required,"APPROVED, PENDING, REJECTED, EXPIRED",-,-,"text; not null; in {APPROVED, PENDING, REJECTED, EXPIRED}"
+SKUSubstitute,support,approved_by_role,str,optional,"SUPPLIER, PLANNER, CARRIER_WAREHOUSE, LOGISTICS_ANALYST, OPS_MANAGER, SYSTEM",-,-,"text; may be empty; in {SUPPLIER, PLANNER, CARRIER_WAREHOUSE, LOGISTICS_ANALYST, OPS_MANAGER, SYSTEM}; required when APPROVED"
+SKUSubstitute,support,approved_date,date,optional,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; may be empty; matches ^\d{4}-\d{2}-\d{2}$; required when APPROVED; <= as_of_date
+SKUSubstitute,support,cost_penalty_pct,float,required,free,%,-,decimal; not null; >= 0; <= 100
+SKUSubstitute,support,effective_from,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,PK part (composite unique),ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+SKUSubstitute,support,effective_to,date,optional,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; may be empty; matches ^\d{4}-\d{2}-\d{2}$
+BillOfMaterial,support,bom_id,str,required,regex ^BOM-\d{6}$,-,PK (unique),text; not null; matches ^BOM-\d{6}$
+BillOfMaterial,support,parent_sku_id,str,required,free,-,-,text; not null; FK -> SKU.sku_id
+BillOfMaterial,support,bom_version,int,required,free,-,-,integer; not null; >= 1
+BillOfMaterial,support,run_time_hours_per_unit,float,required,free,hours/unit,-,decimal; not null; >= 0.0001
+BillOfMaterial,support,lot_size,int,required,free,units,-,integer; not null; >= 1
+BillOfMaterial,support,effective_from,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+BillOfMaterial,support,effective_to,date,optional,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; may be empty; matches ^\d{4}-\d{2}-\d{2}$
+BOMLine,support,bom_id,str,required,free,-,PK part (composite unique),text; not null; FK -> BillOfMaterial.bom_id
+BOMLine,support,component_sku_id,str,required,free,-,PK part (composite unique),text; not null; FK -> SKU.sku_id
+BOMLine,support,qty_per,int,required,free,component base UoM per parent unit,-,integer; not null; >= 1
+BOMLine,support,scrap_pct,float,required,free,fraction,-,decimal; not null; >= 0; <= 0.5
+WorkCenter,support,work_center_id,str,required,regex ^WC-LOC-\d{3}-\d{2}$,-,PK (unique),text; not null; matches ^WC-LOC-\d{3}-\d{2}$
+WorkCenter,support,location_id,str,required,free,-,-,text; not null; FK -> Location.location_id
+WorkCenter,support,work_center_name,str,required,free,-,-,text; not null
+WorkCenter,support,status,str,required,"ACTIVE, INACTIVE",-,-,"text; not null; in {ACTIVE, INACTIVE}"
+ProductionCapacity,support,prod_capacity_id,str,required,regex ^PCAP-\d{6}$,-,PK (unique),text; not null; matches ^PCAP-\d{6}$
+ProductionCapacity,support,work_center_id,str,required,free,-,-,text; not null; FK -> WorkCenter.work_center_id
+ProductionCapacity,support,iso_week,str,required,regex ^20\d{2}W\d{2}$,-,-,text; not null; matches ^20\d{2}W\d{2}$
+ProductionCapacity,support,week_start_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+ProductionCapacity,support,available_hours,float,required,free,hours/week,-,decimal; not null; >= 0
+ForecastDemand,core,demand_id,str,required,regex ^DEM-SKU-\d{6}-LOC-\d{3}-2026W\d{2}$,-,PK (unique),text; not null; matches ^DEM-SKU-\d{6}-LOC-\d{3}-2026W\d{2}$; derived: 'DEM-'+sku_id+'-'+location_id+'-'+iso_week
+ForecastDemand,core,sku_id,str,required,free,-,-,text; not null; FK -> SKU.sku_id
+ForecastDemand,core,location_id,str,required,free,-,-,text; not null; FK -> Location.location_id
+ForecastDemand,core,iso_week,str,required,regex ^20\d{2}W\d{2}$,-,-,text; not null; matches ^20\d{2}W\d{2}$
+ForecastDemand,core,week_start_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+ForecastDemand,core,forecast_qty,int,required,free,base UoM,-,integer; not null; >= 0
+ForecastDemand,core,demand_driver,str,required,"BASELINE, SEASONAL, PROMO, SPIKE",-,-,"text; not null; in {BASELINE, SEASONAL, PROMO, SPIKE}; derived: SPIKE if unplanned uplift, else PROMO if promo window, else SEASONAL if seasonal factor>=1.2, else BASELINE"
+ForecastDemand,core,forecast_stdev,float,required,free,base UoM,-,decimal; not null; >= 0
+Inventory,core,inventory_id,str,required,regex ^INV-SKU-\d{6}-LOC-\d{3}$,-,PK (unique),text; not null; matches ^INV-SKU-\d{6}-LOC-\d{3}$
+Inventory,core,sku_id,str,required,free,-,-,text; not null; FK -> SKU.sku_id
+Inventory,core,location_id,str,required,free,-,-,text; not null; FK -> Location.location_id
+Inventory,core,as_of_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+Inventory,core,on_hand_qty,int,required,free,base UoM,-,integer; not null; >= 0
+Inventory,core,allocated_qty,int,required,free,base UoM,-,integer; not null; >= 0
+Inventory,core,quality_hold_qty,int,required,free,base UoM,-,integer; not null; >= 0
+Inventory,core,safety_stock_qty,int,required,free,base UoM,-,integer; not null; >= 0
+Inventory,core,available_qty,int,required,free,base UoM,-,integer; not null; derived: on_hand_qty - allocated_qty - quality_hold_qty
+Inventory,core,inventory_status,str,required,"AVAILABLE, QUALITY_HOLD",-,-,"text; not null; in {AVAILABLE, QUALITY_HOLD}"
+SupplierCapacity,core,capacity_id,str,required,regex ^SCAP-\d{6}$,-,PK (unique),text; not null; matches ^SCAP-\d{6}$
+SupplierCapacity,core,supplier_id,str,required,free,-,-,text; not null; FK -> Supplier.supplier_id
+SupplierCapacity,core,product_family,str,required,regex ^FAM-\d{2}$,-,-,text; not null; matches ^FAM-\d{2}$
+SupplierCapacity,core,weekly_capacity_qty,int,required,free,base UoM/week,-,integer; not null; >= 1
+SupplierCapacity,core,min_order_qty,int,required,free,base UoM,-,integer; not null; >= 1
+SupplierCapacity,core,order_multiple,int,required,free,base UoM,-,integer; not null; >= 1
+SupplierCapacity,core,capacity_uom,str,required,"EA, KG, MIXED",-,-,"text; not null; in {EA, KG, MIXED}; capacity expressed in each SKU's base UoM"
+SupplierCapacity,core,status,str,required,"ACTIVE, INACTIVE",-,-,"text; not null; in {ACTIVE, INACTIVE}"
+SupplierCapacity,core,effective_from,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+SupplierCapacity,core,effective_to,date,optional,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; may be empty; matches ^\d{4}-\d{2}-\d{2}$
+LeadTime,core,lead_time_id,str,required,regex ^LT-\d{6}$,-,PK (unique),text; not null; matches ^LT-\d{6}$
+LeadTime,core,supplier_id,str,required,free,-,-,text; not null; FK -> Supplier.supplier_id
+LeadTime,core,sku_id,str,required,free,-,-,text; not null; FK -> SKU.sku_id
+LeadTime,core,ship_to_location_id,str,optional,free,-,-,text; may be empty; FK -> Location.location_id; empty = default for all locations
+LeadTime,core,production_days,int,required,free,days,-,integer; not null; >= 0
+LeadTime,core,transit_days,int,required,free,days,-,integer; not null; >= 0
+LeadTime,core,total_lead_days,int,required,free,days,-,integer; not null; >= 0; derived: production_days + transit_days
+LeadTime,core,p90_lead_days,int,required,free,days,-,integer; not null; >= 0; >= total_lead_days
+LeadTime,core,transport_mode,str,required,"ROAD, RAIL, SEA, AIR",-,-,"text; not null; in {ROAD, RAIL, SEA, AIR}"
+LeadTime,core,effective_from,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+LeadTime,core,effective_to,date,optional,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; may be empty; matches ^\d{4}-\d{2}-\d{2}$
+PurchaseOrder,core,po_id,str,required,regex ^PO-2026-\d{6}$,-,PK (unique),text; not null; matches ^PO-2026-\d{6}$
+PurchaseOrder,core,supplier_id,str,required,free,-,-,text; not null; FK -> Supplier.supplier_id
+PurchaseOrder,core,sku_id,str,required,free,-,-,text; not null; FK -> SKU.sku_id
+PurchaseOrder,core,ship_to_location_id,str,required,free,-,-,text; not null; FK -> Location.location_id
+PurchaseOrder,core,carrier_id,str,optional,free,-,-,text; may be empty; FK -> Carrier.carrier_id; assigned once shipped
+PurchaseOrder,core,created_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$; <= as_of_date and <= order_date
+PurchaseOrder,core,order_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+PurchaseOrder,core,requested_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$; >= order_date
+PurchaseOrder,core,promised_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$; >= requested_date
+PurchaseOrder,core,eta_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$; derived: promised_date + sum(delay_days of DELAYED events)
+PurchaseOrder,core,actual_receipt_date,date,optional,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; may be empty; matches ^\d{4}-\d{2}-\d{2}$; derived: eta_date when status=RECEIVED
+PurchaseOrder,core,order_qty,int,required,free,order_uom,-,integer; not null; >= 1
+PurchaseOrder,core,order_uom,str,required,free,-,-,text; not null; FK -> UnitOfMeasure.uom_code
+PurchaseOrder,core,qty_base,int,required,free,base UoM,-,"integer; not null; derived: order_qty * conversion factor(sku, order_uom)"
+PurchaseOrder,core,unit_price,float,required,free,USD/base UoM,-,decimal; not null; >= 0.01
+PurchaseOrder,core,total_cost,float,required,free,USD,-,"decimal; not null; derived: round(qty_base * unit_price, 2)"
+PurchaseOrder,core,supplier_ref_no,str,required,free,-,-,text; not null; supplier document number; the same number on two POs for the same supplier/SKU/ship-to/promised date means the inbound is double counted
+PurchaseOrder,core,status,str,required,"PLANNED, CONFIRMED, IN_TRANSIT, DELAYED, RECEIVED, CANCELLED",-,-,"text; not null; in {PLANNED, CONFIRMED, IN_TRANSIT, DELAYED, RECEIVED, CANCELLED}; derived: to_status of the latest PurchaseOrderEvent"
+ProductionPlan,core,production_plan_id,str,required,regex ^PP-2026-\d{6}$,-,PK (unique),text; not null; matches ^PP-2026-\d{6}$
+ProductionPlan,core,sku_id,str,required,free,-,-,text; not null; FK -> SKU.sku_id
+ProductionPlan,core,location_id,str,required,free,-,-,text; not null; FK -> Location.location_id
+ProductionPlan,core,work_center_id,str,required,free,-,-,text; not null; FK -> WorkCenter.work_center_id
+ProductionPlan,core,bom_id,str,required,free,-,-,text; not null; FK -> BillOfMaterial.bom_id
+ProductionPlan,core,iso_week,str,required,regex ^20\d{2}W\d{2}$,-,-,text; not null; matches ^20\d{2}W\d{2}$
+ProductionPlan,core,week_start_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+ProductionPlan,core,planned_qty,int,required,free,base UoM,-,integer; not null; >= 1; multiple of BOM lot_size
+ProductionPlan,core,required_hours,float,required,free,hours,-,decimal; not null; derived: planned_qty * BillOfMaterial.run_time_hours_per_unit
+ProductionPlan,core,status,str,required,"PLANNED, FIRMED, RELEASED, COMPLETED, CANCELLED",-,-,"text; not null; in {PLANNED, FIRMED, RELEASED, COMPLETED, CANCELLED}; derived: to_status of the latest ProductionPlanEvent"
+PurchaseOrderEvent,event,event_id,str,required,regex ^POE-\d{6}$,-,PK (unique),text; not null; matches ^POE-\d{6}$
+PurchaseOrderEvent,event,po_id,str,required,free,-,-,text; not null; FK -> PurchaseOrder.po_id
+PurchaseOrderEvent,event,event_type,str,required,"CREATED, CONFIRMED, SHIPPED, DELAYED, RECEIVED, CANCELLED",-,-,"text; not null; in {CREATED, CONFIRMED, SHIPPED, DELAYED, RECEIVED, CANCELLED}"
+PurchaseOrderEvent,event,from_status,str,optional,"PLANNED, CONFIRMED, IN_TRANSIT, DELAYED, RECEIVED, CANCELLED",-,-,"text; may be empty; in {PLANNED, CONFIRMED, IN_TRANSIT, DELAYED, RECEIVED, CANCELLED}"
+PurchaseOrderEvent,event,to_status,str,required,"PLANNED, CONFIRMED, IN_TRANSIT, DELAYED, RECEIVED, CANCELLED",-,-,"text; not null; in {PLANNED, CONFIRMED, IN_TRANSIT, DELAYED, RECEIVED, CANCELLED}"
+PurchaseOrderEvent,event,event_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$; <= as_of_date
+PurchaseOrderEvent,event,actor_role,str,required,"SUPPLIER, PLANNER, CARRIER_WAREHOUSE, LOGISTICS_ANALYST, OPS_MANAGER, SYSTEM",-,-,"text; not null; in {SUPPLIER, PLANNER, CARRIER_WAREHOUSE, LOGISTICS_ANALYST, OPS_MANAGER, SYSTEM}"
+PurchaseOrderEvent,event,delay_days,int,optional,free,days,-,integer; may be empty; >= 1; DELAYED only
+PurchaseOrderEvent,event,reason_code,str,optional,free,-,-,text; may be empty
+TransportEvent,event,event_id,str,required,regex ^TRE-\d{6}$,-,PK (unique),text; not null; matches ^TRE-\d{6}$
+TransportEvent,event,po_id,str,required,free,-,-,text; not null; FK -> PurchaseOrder.po_id
+TransportEvent,event,carrier_id,str,required,free,-,-,text; not null; FK -> Carrier.carrier_id
+TransportEvent,event,event_type,str,required,"DEPARTED, DELAYED, ARRIVED",-,-,"text; not null; in {DEPARTED, DELAYED, ARRIVED}"
+TransportEvent,event,event_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$; <= as_of_date
+TransportEvent,event,delay_days,int,optional,free,days,-,integer; may be empty; >= 1
+TransportEvent,event,reason_code,str,optional,"WEATHER, PORT_CONGESTION, CUSTOMS, BREAKDOWN, DOCUMENTATION",-,-,"text; may be empty; in {WEATHER, PORT_CONGESTION, CUSTOMS, BREAKDOWN, DOCUMENTATION}"
+TransportEvent,event,actor_role,str,required,"SUPPLIER, PLANNER, CARRIER_WAREHOUSE, LOGISTICS_ANALYST, OPS_MANAGER, SYSTEM",-,-,"text; not null; in {SUPPLIER, PLANNER, CARRIER_WAREHOUSE, LOGISTICS_ANALYST, OPS_MANAGER, SYSTEM}"
+InventoryEvent,event,event_id,str,required,regex ^INE-\d{6}$,-,PK (unique),text; not null; matches ^INE-\d{6}$
+InventoryEvent,event,sku_id,str,required,free,-,-,text; not null; FK -> SKU.sku_id
+InventoryEvent,event,location_id,str,required,free,-,-,text; not null; FK -> Location.location_id
+InventoryEvent,event,event_type,str,required,"RECEIPT, ISSUE, ADJUSTMENT",-,-,"text; not null; in {RECEIPT, ISSUE, ADJUSTMENT}"
+InventoryEvent,event,qty,int,required,free,base UoM,-,integer; not null
+InventoryEvent,event,event_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$; <= as_of_date
+InventoryEvent,event,po_id,str,optional,free,-,-,text; may be empty; FK -> PurchaseOrder.po_id
+InventoryEvent,event,actor_role,str,required,"SUPPLIER, PLANNER, CARRIER_WAREHOUSE, LOGISTICS_ANALYST, OPS_MANAGER, SYSTEM",-,-,"text; not null; in {SUPPLIER, PLANNER, CARRIER_WAREHOUSE, LOGISTICS_ANALYST, OPS_MANAGER, SYSTEM}"
+ProductionPlanEvent,event,event_id,str,required,regex ^PPE-\d{6}$,-,PK (unique),text; not null; matches ^PPE-\d{6}$
+ProductionPlanEvent,event,production_plan_id,str,required,free,-,-,text; not null; FK -> ProductionPlan.production_plan_id
+ProductionPlanEvent,event,from_status,str,optional,"PLANNED, FIRMED, RELEASED, COMPLETED, CANCELLED",-,-,"text; may be empty; in {PLANNED, FIRMED, RELEASED, COMPLETED, CANCELLED}"
+ProductionPlanEvent,event,to_status,str,required,"PLANNED, FIRMED, RELEASED, COMPLETED, CANCELLED",-,-,"text; not null; in {PLANNED, FIRMED, RELEASED, COMPLETED, CANCELLED}"
+ProductionPlanEvent,event,event_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$; <= as_of_date
+ProductionPlanEvent,event,actor_role,str,required,"SUPPLIER, PLANNER, CARRIER_WAREHOUSE, LOGISTICS_ANALYST, OPS_MANAGER, SYSTEM",-,-,"text; not null; in {SUPPLIER, PLANNER, CARRIER_WAREHOUSE, LOGISTICS_ANALYST, OPS_MANAGER, SYSTEM}"
+PlanRun,derived,run_id,str,required,regex ^RUN-\d{4}$,-,PK (unique),text; not null; matches ^RUN-\d{4}$
+PlanRun,derived,as_of_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+PlanRun,derived,seed,int,required,free,-,-,integer; not null
+PlanRun,derived,profile,str,required,free,-,-,text; not null
+PlanRun,derived,engine_version,str,required,free,-,-,text; not null
+PlanRun,derived,policy_hash,str,required,free,-,-,text; not null
+PlanRun,derived,n_pairs,int,required,free,-,-,integer; not null; >= 0
+PlanRun,derived,n_shortages,int,required,free,-,-,integer; not null; >= 0
+ProjectedBalance,derived,run_id,str,required,free,-,PK part (composite unique),text; not null; FK -> PlanRun.run_id
+ProjectedBalance,derived,sku_id,str,required,free,-,PK part (composite unique),text; not null; FK -> SKU.sku_id
+ProjectedBalance,derived,location_id,str,required,free,-,PK part (composite unique),text; not null; FK -> Location.location_id
+ProjectedBalance,derived,iso_week,str,required,regex ^20\d{2}W\d{2}$,-,PK part (composite unique),text; not null; matches ^20\d{2}W\d{2}$
+ProjectedBalance,derived,week_start_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+ProjectedBalance,derived,opening_qty,int,required,free,-,-,integer; not null; derived: previous closing_qty; week 1 = Inventory.available_qty
+ProjectedBalance,derived,gross_demand_qty,int,required,free,-,-,integer; not null; >= 0; derived: ForecastDemand.forecast_qty
+ProjectedBalance,derived,dependent_demand_qty,int,required,free,-,-,integer; not null; >= 0; derived: BOM explosion of capacity-limited production
+ProjectedBalance,derived,scheduled_receipts_qty,int,required,free,-,-,"integer; not null; >= 0; derived: sum qty_base of open, non-duplicate POs by ETA week"
+ProjectedBalance,derived,production_receipts_qty,int,required,free,-,-,integer; not null; >= 0; derived: capacity-limited planned production
+ProjectedBalance,derived,closing_qty,int,required,free,-,-,integer; not null; derived: opening + receipts + production - gross - dependent
+ProjectedBalance,derived,safety_stock_qty,int,required,free,-,-,integer; not null; >= 0
+ProjectedBalance,derived,shortfall_qty,int,required,free,-,-,"integer; not null; >= 0; derived: max(0, safety_stock - closing)"
+SupplierCapacityLedger,derived,run_id,str,required,free,-,PK part (composite unique),text; not null; FK -> PlanRun.run_id
+SupplierCapacityLedger,derived,supplier_id,str,required,free,-,PK part (composite unique),text; not null; FK -> Supplier.supplier_id
+SupplierCapacityLedger,derived,product_family,str,required,regex ^FAM-\d{2}$,-,PK part (composite unique),text; not null; matches ^FAM-\d{2}$
+SupplierCapacityLedger,derived,week_start_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,PK part (composite unique),ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+SupplierCapacityLedger,derived,iso_week,str,required,free,-,-,text; not null
+SupplierCapacityLedger,derived,committed_qty,int,required,free,-,-,integer; not null; >= 0
+SupplierCapacityLedger,derived,capacity_qty,int,required,free,-,-,integer; not null; >= 0
+SupplierCapacityLedger,derived,utilisation_pct,float,required,free,-,-,decimal; not null; >= 0; derived: 100*committed/capacity
+SupplierCapacityLedger,derived,remaining_qty,int,required,free,-,-,"integer; not null; >= 0; derived: max(0, capacity-committed)"
+SupplierCapacityLedger,derived,status,str,required,"OK, EXCEEDED",-,-,"text; not null; in {OK, EXCEEDED}"
+Shortage,core,shortage_id,str,required,regex ^SHORT-2026-\d{6}$,-,PK (unique),text; not null; matches ^SHORT-2026-\d{6}$
+Shortage,core,run_id,str,required,free,-,-,text; not null; FK -> PlanRun.run_id
+Shortage,core,sku_id,str,required,free,-,-,text; not null; FK -> SKU.sku_id
+Shortage,core,location_id,str,required,free,-,-,text; not null; FK -> Location.location_id
+Shortage,core,first_short_week,str,required,regex ^20\d{2}W\d{2}$,-,-,text; not null; matches ^20\d{2}W\d{2}$
+Shortage,core,last_short_week,str,required,regex ^20\d{2}W\d{2}$,-,-,text; not null; matches ^20\d{2}W\d{2}$
+Shortage,core,peak_short_week,str,required,regex ^20\d{2}W\d{2}$,-,-,text; not null; matches ^20\d{2}W\d{2}$
+Shortage,core,need_by_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$; derived: Monday of first_short_week
+Shortage,core,episode_weeks,int,required,free,-,-,integer; not null; >= 1
+Shortage,core,shortage_type,str,required,"STOCKOUT, SAFETY_STOCK_BREACH",-,-,"text; not null; in {STOCKOUT, SAFETY_STOCK_BREACH}"
+Shortage,core,shortage_qty,int,required,free,base UoM,-,integer; not null; >= 1; derived: max over episode of (safety_stock - projected_balance)
+Shortage,core,value_at_risk,float,required,free,USD,-,decimal; not null; derived: shortage_qty * unit_price
+Shortage,core,priority_score,float,required,free,0-100,-,decimal; not null
+Shortage,core,priority_rank,int,required,free,-,-,integer; not null; >= 1
+Shortage,core,primary_cause_code,str,required,"INBOUND_LATE_TRANSPORT, INBOUND_LATE_SUPPLIER, SUPPLIER_CAPACITY, INBOUND_CANCELLED, PRODUCTION_CAPACITY, PRODUCTION_PLAN_CANCELLED, DEMAND_SPIKE, PRODUCTION_PLAN_SHORTFALL, INBOUND_QTY_SHORTFALL, INSUFFICIENT_LEAD_TIME, NO_INBOUND_PLANNED",-,-,"text; not null; in {INBOUND_LATE_TRANSPORT, INBOUND_LATE_SUPPLIER, SUPPLIER_CAPACITY, INBOUND_CANCELLED, PRODUCTION_CAPACITY, PRODUCTION_PLAN_CANCELLED, DEMAND_SPIKE, PRODUCTION_PLAN_SHORTFALL, INBOUND_QTY_SHORTFALL, INSUFFICIENT_LEAD_TIME, NO_INBOUND_PLANNED}; derived: cause with the largest contribution"
+Shortage,core,data_quality_flag,str,required,"NONE, INBOUND_DOUBLE_COUNT, SUPPLIER_CAPACITY_EXCEEDED, SHORTAGE_MISSING_LEAD_TIME, UOM_MISMATCH",-,-,"text; not null; in {NONE, INBOUND_DOUBLE_COUNT, SUPPLIER_CAPACITY_EXCEEDED, SHORTAGE_MISSING_LEAD_TIME, UOM_MISMATCH}"
+Shortage,core,status,str,required,"DETECTED, ANALYZED, NEEDS_REVIEW, MITIGATION_PROPOSED, MITIGATION_APPROVED, RESOLVED, ACCEPTED_BACKORDER",-,-,"text; not null; in {DETECTED, ANALYZED, NEEDS_REVIEW, MITIGATION_PROPOSED, MITIGATION_APPROVED, RESOLVED, ACCEPTED_BACKORDER}; derived: to_status of latest ShortageEvent"
+ShortageCause,derived,shortage_id,str,required,free,-,PK part (composite unique),text; not null; FK -> Shortage.shortage_id
+ShortageCause,derived,cause_seq,int,required,free,-,PK part (composite unique),integer; not null; >= 1
+ShortageCause,derived,cause_code,str,required,"INBOUND_LATE_TRANSPORT, INBOUND_LATE_SUPPLIER, SUPPLIER_CAPACITY, INBOUND_CANCELLED, PRODUCTION_CAPACITY, PRODUCTION_PLAN_CANCELLED, DEMAND_SPIKE, PRODUCTION_PLAN_SHORTFALL, INBOUND_QTY_SHORTFALL, INSUFFICIENT_LEAD_TIME, NO_INBOUND_PLANNED",-,-,"text; not null; in {INBOUND_LATE_TRANSPORT, INBOUND_LATE_SUPPLIER, SUPPLIER_CAPACITY, INBOUND_CANCELLED, PRODUCTION_CAPACITY, PRODUCTION_PLAN_CANCELLED, DEMAND_SPIKE, PRODUCTION_PLAN_SHORTFALL, INBOUND_QTY_SHORTFALL, INSUFFICIENT_LEAD_TIME, NO_INBOUND_PLANNED}"
+ShortageCause,derived,contribution_qty,int,required,free,-,-,integer; not null; >= 1
+ShortageCause,derived,source_table,str,required,free,-,-,text; not null
+ShortageCause,derived,source_id,str,required,free,-,-,text; not null
+ShortageCause,derived,explanation,str,required,free,-,-,text; not null
+MitigationOption,core,mitigation_id,str,required,regex ^MIT-SHORT-2026-\d{6}-\d{2}$,-,PK (unique),text; not null; matches ^MIT-SHORT-2026-\d{6}-\d{2}$; derived: 'MIT-'+shortage_id+'-'+NN
+MitigationOption,core,shortage_id,str,required,free,-,-,text; not null; FK -> Shortage.shortage_id
+MitigationOption,core,option_type,str,required,"EXPEDITE_PO, NEW_PO, ALT_SUPPLIER_PO, SUBSTITUTE_SKU, LOCATION_TRANSFER, PRODUCTION_REPLAN, PARTIAL_FILL_BACKORDER",-,-,"text; not null; in {EXPEDITE_PO, NEW_PO, ALT_SUPPLIER_PO, SUBSTITUTE_SKU, LOCATION_TRANSFER, PRODUCTION_REPLAN, PARTIAL_FILL_BACKORDER}"
+MitigationOption,core,supplier_id,str,optional,free,-,-,text; may be empty; FK -> Supplier.supplier_id
+MitigationOption,core,alt_sku_id,str,optional,free,-,-,text; may be empty; FK -> SKU.sku_id
+MitigationOption,core,source_location_id,str,optional,free,-,-,text; may be empty; FK -> Location.location_id
+MitigationOption,core,ref_po_id,str,optional,free,-,-,text; may be empty; FK -> PurchaseOrder.po_id
+MitigationOption,core,production_plan_id,str,optional,free,-,-,text; may be empty; FK -> ProductionPlan.production_plan_id
+MitigationOption,core,qty,int,required,free,base UoM of the option's SKU,-,integer; not null; >= 0; after MOQ / multiple / lot rounding
+MitigationOption,core,covered_qty,int,required,free,shortage-SKU base UoM,-,integer; not null; >= 0
+MitigationOption,core,unit_cost,float,required,free,USD/base UoM,-,decimal; not null; >= 0
+MitigationOption,core,expedite_premium,float,required,free,USD,-,decimal; not null; >= 0
+MitigationOption,core,freight_cost,float,required,free,USD,-,decimal; not null; >= 0
+MitigationOption,core,excess_cost,float,required,free,USD,-,decimal; not null; >= 0
+MitigationOption,core,penalty_cost,float,required,free,USD,-,decimal; not null; >= 0
+MitigationOption,core,total_cost,float,required,free,USD,-,decimal; not null; derived: expedite_premium+freight_cost+excess_cost+penalty_cost (incremental cost)
+MitigationOption,core,cost_delta_vs_baseline,float,required,free,USD,-,decimal; not null; derived: total_cost - backorder option total_cost
+MitigationOption,core,lead_days,int,optional,free,days,-,integer; may be empty; >= 0
+MitigationOption,core,earliest_arrival_date,date,optional,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; may be empty; matches ^\d{4}-\d{2}-\d{2}$
+MitigationOption,core,weeks_late,int,optional,free,-,-,integer; may be empty; >= 0
+MitigationOption,core,fill_rate_pct,float,required,free,%,-,"decimal; not null; >= 0; <= 100; derived: 100*covered/shortage_qty*(1-min(1,weeks_late/episode_weeks))"
+MitigationOption,core,capacity_available_qty,int,optional,free,base UoM,-,integer; may be empty; >= 0
+MitigationOption,core,capacity_check,str,required,"PASS, FAIL, NA",-,-,"text; not null; in {PASS, FAIL, NA}"
+MitigationOption,core,policy_check,str,required,"PASS, FAIL",-,-,"text; not null; in {PASS, FAIL}"
+MitigationOption,core,policy_reason,str,optional,free,-,-,text; may be empty
+MitigationOption,core,lead_time_check,str,required,"OK, LATE, MISSING, NA",-,-,"text; not null; in {OK, LATE, MISSING, NA}"
+MitigationOption,core,approval_required_role,str,required,"PLANNER, OPS_MANAGER",-,-,"text; not null; in {PLANNER, OPS_MANAGER}"
+MitigationOption,core,is_recommendable,int,required,"0, 1",-,-,"integer; not null; in {0, 1}"
+MitigationOption,core,rank,int,required,free,-,-,integer; not null; >= 1
+MitigationOption,core,is_recommended,int,required,"0, 1",-,-,"integer; not null; in {0, 1}"
+MitigationOption,core,status,str,required,"PROPOSED, APPROVED, REJECTED, EXECUTED",-,-,"text; not null; in {PROPOSED, APPROVED, REJECTED, EXECUTED}; derived: to_status of latest MitigationEvent"
+ShortageEvent,event,event_id,str,required,regex ^SHE-\d{6}$,-,PK (unique),text; not null; matches ^SHE-\d{6}$
+ShortageEvent,event,shortage_id,str,required,free,-,-,text; not null; FK -> Shortage.shortage_id
+ShortageEvent,event,from_status,str,optional,"DETECTED, ANALYZED, NEEDS_REVIEW, MITIGATION_PROPOSED, MITIGATION_APPROVED, RESOLVED, ACCEPTED_BACKORDER",-,-,"text; may be empty; in {DETECTED, ANALYZED, NEEDS_REVIEW, MITIGATION_PROPOSED, MITIGATION_APPROVED, RESOLVED, ACCEPTED_BACKORDER}"
+ShortageEvent,event,to_status,str,required,"DETECTED, ANALYZED, NEEDS_REVIEW, MITIGATION_PROPOSED, MITIGATION_APPROVED, RESOLVED, ACCEPTED_BACKORDER",-,-,"text; not null; in {DETECTED, ANALYZED, NEEDS_REVIEW, MITIGATION_PROPOSED, MITIGATION_APPROVED, RESOLVED, ACCEPTED_BACKORDER}"
+ShortageEvent,event,event_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+ShortageEvent,event,actor_role,str,required,"SUPPLIER, PLANNER, CARRIER_WAREHOUSE, LOGISTICS_ANALYST, OPS_MANAGER, SYSTEM",-,-,"text; not null; in {SUPPLIER, PLANNER, CARRIER_WAREHOUSE, LOGISTICS_ANALYST, OPS_MANAGER, SYSTEM}"
+ShortageEvent,event,comment,str,optional,free,-,-,text; may be empty
+MitigationEvent,event,event_id,str,required,regex ^MIE-\d{6}$,-,PK (unique),text; not null; matches ^MIE-\d{6}$
+MitigationEvent,event,mitigation_id,str,required,free,-,-,text; not null; FK -> MitigationOption.mitigation_id
+MitigationEvent,event,from_status,str,optional,"PROPOSED, APPROVED, REJECTED, EXECUTED",-,-,"text; may be empty; in {PROPOSED, APPROVED, REJECTED, EXECUTED}"
+MitigationEvent,event,to_status,str,required,"PROPOSED, APPROVED, REJECTED, EXECUTED",-,-,"text; not null; in {PROPOSED, APPROVED, REJECTED, EXECUTED}"
+MitigationEvent,event,event_date,date,required,regex ^\d{4}-\d{2}-\d{2}$,-,-,ISO date YYYY-MM-DD; not null; matches ^\d{4}-\d{2}-\d{2}$
+MitigationEvent,event,actor_role,str,required,"SUPPLIER, PLANNER, CARRIER_WAREHOUSE, LOGISTICS_ANALYST, OPS_MANAGER, SYSTEM",-,-,"text; not null; in {SUPPLIER, PLANNER, CARRIER_WAREHOUSE, LOGISTICS_ANALYST, OPS_MANAGER, SYSTEM}"
+MitigationEvent,event,comment,str,optional,free,-,-,text; may be empty
+DataQualityFinding,derived,finding_id,str,required,regex ^DQF-\d{6}$,-,PK (unique),text; not null; matches ^DQF-\d{6}$
+DataQualityFinding,derived,run_id,str,required,free,-,-,text; not null; FK -> PlanRun.run_id
+DataQualityFinding,derived,issue_type,str,required,"INBOUND_DOUBLE_COUNT, SUBSTITUTE_NOT_APPROVED, SUPPLIER_CAPACITY_EXCEEDED, SHORTAGE_MISSING_LEAD_TIME, UOM_MISMATCH, UOM_FACTOR_MISSING",-,-,"text; not null; in {INBOUND_DOUBLE_COUNT, SUBSTITUTE_NOT_APPROVED, SUPPLIER_CAPACITY_EXCEEDED, SHORTAGE_MISSING_LEAD_TIME, UOM_MISMATCH, UOM_FACTOR_MISSING}"
+DataQualityFinding,derived,entity,str,required,free,-,-,text; not null
+DataQualityFinding,derived,record_id,str,required,free,-,-,text; not null
+DataQualityFinding,derived,related_record_ids,str,optional,free,-,-,text; may be empty
+DataQualityFinding,derived,impact_qty,int,optional,free,-,-,integer; may be empty
+DataQualityFinding,derived,detail,str,required,free,-,-,text; not null

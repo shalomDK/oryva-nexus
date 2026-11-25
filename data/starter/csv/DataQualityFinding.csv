@@ -1,0 +1,25 @@
+finding_id,run_id,issue_type,entity,record_id,related_record_ids,impact_qty,detail
+DQF-000001,RUN-0001,INBOUND_DOUBLE_COUNT,PurchaseOrder,PO-2026-000994,PO-2026-000093,384,duplicate of PO-2026-000093: same supplier/SKU/ship-to/promised date/supplier_ref_no; excluded from supply
+DQF-000002,RUN-0001,INBOUND_DOUBLE_COUNT,PurchaseOrder,PO-2026-000995,PO-2026-000103,576,duplicate of PO-2026-000103: same supplier/SKU/ship-to/promised date/supplier_ref_no; excluded from supply
+DQF-000003,RUN-0001,INBOUND_DOUBLE_COUNT,PurchaseOrder,PO-2026-000996,PO-2026-000150,480,duplicate of PO-2026-000150: same supplier/SKU/ship-to/promised date/supplier_ref_no; excluded from supply
+DQF-000004,RUN-0001,INBOUND_DOUBLE_COUNT,PurchaseOrder,PO-2026-000997,PO-2026-000158,1638,duplicate of PO-2026-000158: same supplier/SKU/ship-to/promised date/supplier_ref_no; excluded from supply
+DQF-000005,RUN-0001,INBOUND_DOUBLE_COUNT,PurchaseOrder,PO-2026-000999,PO-2026-000001,162,duplicate of PO-2026-000001: same supplier/SKU/ship-to/promised date/supplier_ref_no; excluded from supply
+DQF-000006,RUN-0001,INBOUND_DOUBLE_COUNT,PurchaseOrder,PO-2026-001000,PO-2026-000002,96,duplicate of PO-2026-000002: same supplier/SKU/ship-to/promised date/supplier_ref_no; excluded from supply
+DQF-000007,RUN-0001,UOM_MISMATCH,PurchaseOrder,PO-2026-000047,,1155,qty_base 105 != order_qty x factor = 1260; engine uses the recomputed quantity
+DQF-000008,RUN-0001,UOM_MISMATCH,PurchaseOrder,PO-2026-000087,,1505,qty_base 301 != order_qty x factor = 1806; engine uses the recomputed quantity
+DQF-000009,RUN-0001,UOM_MISMATCH,PurchaseOrder,PO-2026-000100,,660,qty_base 132 != order_qty x factor = 792; engine uses the recomputed quantity
+DQF-000010,RUN-0001,UOM_MISMATCH,PurchaseOrder,PO-2026-000169,,1540,qty_base 140 != order_qty x factor = 1680; engine uses the recomputed quantity
+DQF-000011,RUN-0001,SUPPLIER_CAPACITY_EXCEEDED,SupplierCapacityLedger,SUP-0001|FAM-01|2026-02-02,,81,committed 402 > capacity 321
+DQF-000012,RUN-0001,SUPPLIER_CAPACITY_EXCEEDED,SupplierCapacityLedger,SUP-0001|FAM-02|2026-02-02,,190,committed 948 > capacity 758
+DQF-000013,RUN-0001,SUPPLIER_CAPACITY_EXCEEDED,SupplierCapacityLedger,SUP-0001|FAM-11|2026-03-09,,549,committed 2742 > capacity 2193
+DQF-000014,RUN-0001,SUPPLIER_CAPACITY_EXCEEDED,SupplierCapacityLedger,SUP-0002|FAM-02|2026-02-16,,672,committed 3360 > capacity 2688
+DQF-000015,RUN-0001,SHORTAGE_MISSING_LEAD_TIME,LeadTime,SUP-0031|SKU-000008,SHORT-2026-000002|SHORT-2026-000003|SHORT-2026-000004,,"shortage exists but no lead time for this supplier/SKU: mitigation blocked, shortage needs review"
+DQF-000016,RUN-0001,SHORTAGE_MISSING_LEAD_TIME,LeadTime,SUP-0042|SKU-000008,SHORT-2026-000002|SHORT-2026-000003|SHORT-2026-000004,,"shortage exists but no lead time for this supplier/SKU: mitigation blocked, shortage needs review"
+DQF-000017,RUN-0001,SHORTAGE_MISSING_LEAD_TIME,LeadTime,SUP-0014|SKU-000010,SHORT-2026-000005|SHORT-2026-000006,,"shortage exists but no lead time for this supplier/SKU: mitigation blocked, shortage needs review"
+DQF-000018,RUN-0001,SHORTAGE_MISSING_LEAD_TIME,LeadTime,SUP-0043|SKU-000010,SHORT-2026-000005|SHORT-2026-000006,,"shortage exists but no lead time for this supplier/SKU: mitigation blocked, shortage needs review"
+DQF-000019,RUN-0001,SHORTAGE_MISSING_LEAD_TIME,LeadTime,SUP-0015|SKU-000027,SHORT-2026-000007,,"shortage exists but no lead time for this supplier/SKU: mitigation blocked, shortage needs review"
+DQF-000020,RUN-0001,SHORTAGE_MISSING_LEAD_TIME,LeadTime,SUP-0018|SKU-000030,SHORT-2026-000008,,"shortage exists but no lead time for this supplier/SKU: mitigation blocked, shortage needs review"
+DQF-000021,RUN-0001,SUBSTITUTE_NOT_APPROVED,SKUSubstitute,SKU-000034>SKU-000018@2025-11-29,SHORT-2026-000009,,"substitute status PENDING: option kept for audit, never recommended"
+DQF-000022,RUN-0001,SUBSTITUTE_NOT_APPROVED,SKUSubstitute,SKU-000036>SKU-000099@2025-11-29,SHORT-2026-000010,,"substitute status REJECTED: option kept for audit, never recommended"
+DQF-000023,RUN-0001,SUBSTITUTE_NOT_APPROVED,SKUSubstitute,SKU-000067>SKU-000043@2024-11-24,SHORT-2026-000018|SHORT-2026-000019|SHORT-2026-000020,,"substitute status EXPIRED: option kept for audit, never recommended"
+DQF-000024,RUN-0001,SUBSTITUTE_NOT_APPROVED,SKUSubstitute,SKU-000076>SKU-000019@2025-11-29,SHORT-2026-000021,,"substitute status PENDING: option kept for audit, never recommended"

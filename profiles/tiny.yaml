@@ -1,0 +1,30 @@
+﻿# TINY profile: unit-test scale. Same generator.
+name: tiny
+seed: 20261022
+as_of_date: "2025-12-29"
+n_skus: 60
+n_locations: 6
+n_weeks: 52
+n_suppliers: 12
+n_purchase_orders: 250
+assortment_density: 0.50
+inactive_pair_share: 0.03
+n_families: 4
+sku_mix: {make: 0.20, component: 0.20}
+location_mix: {plant: 0.17, dc: 0.17}
+scenario:
+  spike_pair_share: 0.12
+  promo_pair_share: 0.10
+  constrained_supplier_share: 0.25
+  delay_share: 0.35
+  tight_pair_share: 0.08
+  substitute_share: 0.25
+  cancelled_po_share: 0.03
+  historic_po_share: 0.08
+  early_arrival_share: 0.30       # share of pairs whose first PO arrives in weeks 1-8 (in transit at as_of)
+  constrained_work_center_share: 0.20
+edge_cases:
+  per_type: 2
+json_max_rows: 200000
+
+

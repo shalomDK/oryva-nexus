@@ -1,0 +1,234 @@
+{
+  "volumes": {
+    "SKU": 300,
+    "Location": 10,
+    "Supplier": 50,
+    "PurchaseOrder": 1000,
+    "demand_weeks": 52,
+    "ForecastDemand_rows": 45864,
+    "csv_rows_equal_manifest": true
+  },
+  "assortment": {
+    "pairs_total": 900,
+    "density": 0.3,
+    "active_pairs": 882,
+    "all_skus_active_somewhere": true,
+    "all_locations_active_somewhere": true,
+    "active_pairs_with_exactly_52_weeks": true
+  },
+  "entity_volumes_present": {
+    "SKU": 300,
+    "Location": 10,
+    "ForecastDemand": 45864,
+    "Inventory": 882,
+    "Supplier": 50,
+    "SupplierCapacity": 105,
+    "LeadTime": 427,
+    "PurchaseOrder": 1000,
+    "ProductionPlan": 2652,
+    "Shortage": 92,
+    "MitigationOption": 414
+  },
+  "sql": {
+    "load_ok": true,
+    "foreign_key_violations": 0,
+    "row_counts_equal_csv": true,
+    "tables_with_primary_key": 32,
+    "foreign_key_clauses": 57,
+    "tables": 32
+  },
+  "fk_pandas": {
+    "relationships_checked": 57,
+    "orphans_total": 0,
+    "nonzero": {}
+  },
+  "pk_duplicates": {
+    "tables": 32,
+    "total_duplicates": 0
+  },
+  "composite_fk": {
+    "demand_pair_not_in_SKULocation": 0,
+    "PO_pair_not_in_SKULocation": 0,
+    "PO_supplier_sku_not_in_SKUSupplier": 0
+  },
+  "id_patterns_nonmatching": {
+    "SKU.sku_id": 0,
+    "PurchaseOrder.po_id": 0,
+    "Shortage.shortage_id": 0,
+    "ForecastDemand.demand_id": 0,
+    "MitigationOption.mitigation_id": 0,
+    "demand_id_equals_sku_loc_week": 0,
+    "mitigation_id_prefix_equals_shortage_id": 0
+  },
+  "balance_independent_recompute": {
+    "buy_pairs_checked": 675,
+    "cells_checked": 35100,
+    "cells_mismatching": 0
+  },
+  "shortage_independent_recompute": {
+    "episodes_recomputed": 72,
+    "episodes_in_table": 72,
+    "identical": true
+  },
+  "pab_identity_all_pairs": {
+    "rows": 45864,
+    "nonzero_residual": 0
+  },
+  "cause_reconciliation": {
+    "shortages": 92,
+    "without_cause": 0,
+    "cause_sum_ne_qty": 0
+  },
+  "mitigation_constraints": {
+    "recommendable_supplier_PO_options_checked": 110,
+    "qty_below_MOQ": 0,
+    "qty_not_multiple": 0,
+    "qty_over_remaining_capacity": 0,
+    "lead_days_ne_LeadTime": 0,
+    "supplier_not_active": 0,
+    "arrival_ne_asof_plus_lead": 0,
+    "recommended_aggregate_over_capacity": 0,
+    "missing_leadtime_options_recommendable": 0,
+    "failed_policy_recommendable": 0,
+    "shortages_with_lt2_options": 0,
+    "options_missing_cost_or_service": 0,
+    "recommended_substitutes_not_approved": 0
+  },
+  "mitigation_all_types_independent": {
+    "checked": {
+      "transfer": 149,
+      "substitute": 5,
+      "production": 10,
+      "expedite": 16
+    },
+    "transfer_over_donor_surplus": 0,
+    "transfer_aggregate_over_surplus": 0,
+    "transfer_lead_days_wrong": 0,
+    "substitute_over_surplus": 0,
+    "substitute_aggregate_over_surplus": 0,
+    "substitute_not_stocked": 0,
+    "substitute_qty_lt_needed": 0,
+    "production_frozen_or_late": 0,
+    "production_not_lot_multiple": 0,
+    "production_hours_over_available_conservative": 0,
+    "expedite_bad": 0,
+    "weeks_late_wrong": 0,
+    "fill_rate_wrong": 0
+  },
+  "ground_truth": {
+    "rows": 26,
+    "by_issue_and_class": [
+      {
+        "issue_type": "INBOUND_DOUBLE_COUNT",
+        "label_class": "ANOMALY",
+        "n": 6
+      },
+      {
+        "issue_type": "INBOUND_DOUBLE_COUNT",
+        "label_class": "BOUNDARY",
+        "n": 1
+      },
+      {
+        "issue_type": "SHORTAGE_MISSING_LEAD_TIME",
+        "label_class": "ANOMALY",
+        "n": 6
+      },
+      {
+        "issue_type": "SUBSTITUTE_NOT_APPROVED",
+        "label_class": "ANOMALY",
+        "n": 4
+      },
+      {
+        "issue_type": "SUPPLIER_CAPACITY_EXCEEDED",
+        "label_class": "ANOMALY",
+        "n": 4
+      },
+      {
+        "issue_type": "SUPPLIER_CAPACITY_EXCEEDED",
+        "label_class": "BOUNDARY",
+        "n": 1
+      },
+      {
+        "issue_type": "UOM_MISMATCH",
+        "label_class": "ANOMALY",
+        "n": 4
+      }
+    ],
+    "input_tables_with_label_columns": [],
+    "output_tables_with_issue_type_column": [
+      "DataQualityFinding"
+    ],
+    "gt_files_inside_csv_dir": [],
+    "gt_record_ids_exist": {
+      "INBOUND_DOUBLE_COUNT": true,
+      "UOM_MISMATCH": true
+    },
+    "engine_sources_referencing_ground_truth": []
+  },
+  "engine_rerun_from_inputs_only_equals_export": {
+    "Shortage": true,
+    "ShortageCause": true,
+    "MitigationOption": true,
+    "DataQualityFinding": true,
+    "ProjectedBalance": true,
+    "SupplierCapacityLedger": true
+  },
+  "edge_case_detection": [
+    {
+      "issue_type": "INBOUND_DOUBLE_COUNT",
+      "labelled": 6,
+      "flagged": 6,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "boundary_flagged": 0
+    },
+    {
+      "issue_type": "SHORTAGE_MISSING_LEAD_TIME",
+      "labelled": 6,
+      "flagged": 6,
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "boundary_flagged": 0
+    },
+    {
+      "issue_type": "SUBSTITUTE_NOT_APPROVED",
+      "labelled": 4,
+      "flagged": 4,
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "boundary_flagged": 0
+    },
+    {
+      "issue_type": "SUPPLIER_CAPACITY_EXCEEDED",
+      "labelled": 4,
+      "flagged": 4,
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "boundary_flagged": 0
+    },
+    {
+      "issue_type": "UOM_MISMATCH",
+      "labelled": 4,
+      "flagged": 4,
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "boundary_flagged": 0
+    }
+  ],
+  "json_vs_csv": {
+    "tables_with_json": 32,
+    "mismatch": [],
+    "missing": []
+  },
+  "manifest": {
+    "files": 105,
+    "checksum_mismatch": [],
+    "seed": 20261022,
+    "command": "python -m oryva generate --profile starter --out data/starter"
+  }
+}

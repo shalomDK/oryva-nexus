@@ -1,0 +1,13 @@
+INSERT INTO "WorkCenter" ("work_center_id", "location_id", "work_center_name", "status") VALUES
+('WC-LOC-006-01', 'LOC-006', 'Line 1', 'ACTIVE'),
+('WC-LOC-006-02', 'LOC-006', 'Line 2', 'ACTIVE'),
+('WC-LOC-019-01', 'LOC-019', 'Line 1', 'ACTIVE'),
+('WC-LOC-019-02', 'LOC-019', 'Line 2', 'ACTIVE'),
+('WC-LOC-022-01', 'LOC-022', 'Line 1', 'ACTIVE'),
+('WC-LOC-022-02', 'LOC-022', 'Line 2', 'ACTIVE'),
+('WC-LOC-024-01', 'LOC-024', 'Line 1', 'ACTIVE'),
+('WC-LOC-024-02', 'LOC-024', 'Line 2', 'ACTIVE'),
+('WC-LOC-031-01', 'LOC-031', 'Line 1', 'ACTIVE'),
+('WC-LOC-031-02', 'LOC-031', 'Line 2', 'ACTIVE'),
+('WC-LOC-039-01', 'LOC-039', 'Line 1', 'ACTIVE'),
+('WC-LOC-039-02', 'LOC-039', 'Line 2', 'ACTIVE');

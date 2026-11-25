@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.venv/
+.env
+/tmp_out/
+data/_scratch/
+prof.out
+logs/
+data/app_state.sqlite
+data/_scratch*/
+data/starter_fresh/
+src/*.egg-info/
+*.sqlite
+.claude/

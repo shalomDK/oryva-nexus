@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oryva-nexus"
+version = "1.0.0"
+description = "ORYVA NEXUS - demand, inventory & supply planning with reproducible synthetic data"
+requires-python = ">=3.11"
+dependencies = ["numpy>=2.0", "pandas>=2.2", "pyyaml>=6.0"]
+
+[project.optional-dependencies]
+# mandatory pipeline needs only numpy/pandas/pyyaml; the dashboard + advanced modules need the "app" extra
+app = ["streamlit>=1.40", "altair>=5.0", "tabulate>=0.9"]
+dev = ["pytest>=8.0", "streamlit>=1.40", "altair>=5.0", "tabulate>=0.9"]
+
+[project.scripts]
+oryva = "oryva.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = ["slow: tests that generate the starter profile"]

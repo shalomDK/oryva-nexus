@@ -1,0 +1,618 @@
+{
+  "as_of_date": "2025-12-29",
+  "environment": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "python": "3.13.12"
+  },
+  "files": {
+    "SOURCE_MANIFEST.md": {
+      "bytes": 587,
+      "sha256": "cf30f4176b278b6b59ccfc8fa9451382b106052eed5273e37ceea8dc3ef03b09"
+    },
+    "csv/BOMLine.csv": {
+      "bytes": 5436,
+      "rows": 174,
+      "sha256": "74c2037aaa89887636f44bad8893e9ff617dc90ba661891be521050be919befc"
+    },
+    "csv/BillOfMaterial.csv": {
+      "bytes": 2846,
+      "rows": 60,
+      "sha256": "adbba7bf23af1f8b9f22ec260f2eb93ead2121248b5f68895e8b8fd9f7d0005e"
+    },
+    "csv/Carrier.csv": {
+      "bytes": 327,
+      "rows": 8,
+      "sha256": "455233ee3c2c4315dbc1faf20355c1cd1845d5798be1cbc435100825a1e3468d"
+    },
+    "csv/DataQualityFinding.csv": {
+      "bytes": 4407,
+      "rows": 24,
+      "sha256": "84408f95e35e85b9569dbe8fc8f2143c3e5b5b591438f1a73bdab6bf251ff72f"
+    },
+    "csv/ForecastDemand.csv": {
+      "bytes": 4025138,
+      "rows": 45864,
+      "sha256": "947c3eb23419dedce88444a806221f91bb626a4f557e8dda33dc8f939d6f87b4"
+    },
+    "csv/Inventory.csv": {
+      "bytes": 68742,
+      "rows": 882,
+      "sha256": "9bc4733d42d1b68930e8874d178e5ba12d00d7c361447bd5bd333f558bcdc7e5"
+    },
+    "csv/InventoryEvent.csv": {
+      "bytes": 5232,
+      "rows": 60,
+      "sha256": "3c6a956c94c5b278e5c8e7f939d2d693867f2e697505f64737a84de944ac0bb1"
+    },
+    "csv/LeadTime.csv": {
+      "bytes": 25249,
+      "rows": 427,
+      "sha256": "ae861d8bd522891f1a577e5f328d2ea9e8f78a83251e2a39cbe72b193366585c"
+    },
+    "csv/Location.csv": {
+      "bytes": 692,
+      "rows": 10,
+      "sha256": "04e897777cdb4f7ee5275074ea0e676d81bdabc90d9087a7a61d4d9ad727ae35"
+    },
+    "csv/MitigationEvent.csv": {
+      "bytes": 41623,
+      "rows": 446,
+      "sha256": "d81de54436540c292e2e6925abdbdf08e64964ec14d41d3b1e62c886c0fb72b3"
+    },
+    "csv/MitigationOption.csv": {
+      "bytes": 80523,
+      "rows": 414,
+      "sha256": "7bbe8fd92e54b20c29e710572b4f25a8f94512f0f2cf1ed2a6c6327f8f56a7ec"
+    },
+    "csv/PlanRun.csv": {
+      "bytes": 145,
+      "rows": 1,
+      "sha256": "6022a41bfb1537d1fe41728c3ce3fa42247cedde98d18910ca633c4ab5be40e7"
+    },
+    "csv/ProductionCapacity.csv": {
+      "bytes": 11253,
+      "rows": 208,
+      "sha256": "e723719da476bcff3e8f059516ea792f3a4def9072e5d26658b955f5c69b7585"
+    },
+    "csv/ProductionPlan.csv": {
+      "bytes": 254648,
+      "rows": 2652,
+      "sha256": "671b4e84dcb94595791c4645b8baea313f94ad8b35cd5391f6c1cf5ac577939b"
+    },
+    "csv/ProductionPlanEvent.csv": {
+      "bytes": 170791,
+      "rows": 3108,
+      "sha256": "c9eafc2abeff21eee2205c1da6aab3de9010560ead09b05444ab050205e40ba9"
+    },
+    "csv/ProjectedBalance.csv": {
+      "bytes": 3129953,
+      "rows": 45864,
+      "sha256": "222cd0c825fcfcfdcabcc250ba34830043adc7e6a3ce8ee3bdbbf8562de6b801"
+    },
+    "csv/PurchaseOrder.csv": {
+      "bytes": 159714,
+      "rows": 1000,
+      "sha256": "630f62f88c70ded2b2392151dc2016f59bbe51c9ed03c0c96042dbe784e812f8"
+    },
+    "csv/PurchaseOrderEvent.csv": {
+      "bytes": 98341,
+      "rows": 1425,
+      "sha256": "f884f02ab7ee21920ba8506d9aa3741dad7a2fee4adfe19e12ef6558ff9d16e3"
+    },
+    "csv/SKU.csv": {
+      "bytes": 29076,
+      "rows": 300,
+      "sha256": "60f08c03fa27f9f38b37a079baabf88fde0abb502db43e2772403544f6d327f8"
+    },
+    "csv/SKULocation.csv": {
+      "bytes": 34299,
+      "rows": 900,
+      "sha256": "f167f9c78bfadd1d5a5bfba78a2ff52627eeb6e78c7703f2a547ffd103df1887"
+    },
+    "csv/SKUSubstitute.csv": {
+      "bytes": 2972,
+      "rows": 37,
+      "sha256": "a3da94adbd6b3ce929207b904846b830d909b654deb44cef53d3506086bea4d8"
+    },
+    "csv/SKUSupplier.csv": {
+      "bytes": 20705,
+      "rows": 406,
+      "sha256": "fcadafaa239b32753154db2765fecc7912dea36ba349727e17e38365cf219d25"
+    },
+    "csv/Shortage.csv": {
+      "bytes": 15467,
+      "rows": 92,
+      "sha256": "acda4bdd321d6a73cf42fee12bc6a2d838c1da77a715ebed539886310bcbeccf"
+    },
+    "csv/ShortageCause.csv": {
+      "bytes": 11861,
+      "rows": 96,
+      "sha256": "d118f6a7a488246bc226b5186da1775e674a4af0cbbe59e12654f6a68c29973b"
+    },
+    "csv/ShortageEvent.csv": {
+      "bytes": 27453,
+      "rows": 276,
+      "sha256": "e68dcc886e6d12c5880fc03b20655521611f892bae3af035f68121bc15f59e61"
+    },
+    "csv/Supplier.csv": {
+      "bytes": 4321,
+      "rows": 50,
+      "sha256": "a7296f62654dad498dc47b3a754aefeba1cd8b24c108979686a0bae310819f4d"
+    },
+    "csv/SupplierCapacity.csv": {
+      "bytes": 6830,
+      "rows": 105,
+      "sha256": "c3effb349d4b05b8a78f090809852f166747fc8b8c9bb9405b86e64d32ccf279"
+    },
+    "csv/SupplierCapacityLedger.csv": {
+      "bytes": 58309,
+      "rows": 838,
+      "sha256": "3800a61b54227d95ce56f3dd34f77c6aaa01610c214905be93b81f25ff1e6cbc"
+    },
+    "csv/TransportEvent.csv": {
+      "bytes": 13309,
+      "rows": 179,
+      "sha256": "8734ff3233f8899ac61472025808d726dd3b32a7228f779784300148e89bc37d"
+    },
+    "csv/UnitOfMeasure.csv": {
+      "bytes": 88,
+      "rows": 4,
+      "sha256": "814442347533ea051bec2de7a331b21340fb870b383c22c7eb5c7cbaf3985511"
+    },
+    "csv/UoMConversion.csv": {
+      "bytes": 11434,
+      "rows": 240,
+      "sha256": "26bcdac4d5954cd63136aa1595eaa1af26eff2ead1a00198eb4b7ef838a8030a"
+    },
+    "csv/WorkCenter.csv": {
+      "bytes": 195,
+      "rows": 4,
+      "sha256": "cd341d9ecde8ad73725999be203f975850bd4617ef9c7710cff5c85e30efb443"
+    },
+    "docs/data_dictionary.csv": {
+      "bytes": 36294,
+      "sha256": "db870531b3f2dae6617206514195278d64589b1ea7d88d6bea73c25fa25e3e29"
+    },
+    "docs/data_dictionary.md": {
+      "bytes": 43487,
+      "sha256": "55672ff6666f933e829bdc2dbb2d156513eb3e73ab9ec6262570541ad386ea70"
+    },
+    "docs/evaluation.json": {
+      "bytes": 4620,
+      "sha256": "a772277d2b3528bfd9f7669f422049df11f4215cb33554337ff4e22f380e65f7"
+    },
+    "docs/validation_checks.csv": {
+      "bytes": 42988,
+      "sha256": "13c66ae897f5223b7e85e959080a6ad9526762cdbcc278e2580f80c94c899104"
+    },
+    "docs/validation_summary.md": {
+      "bytes": 58222,
+      "sha256": "c5e3fa60f90ce467c137ca3d179e8cdf2fd84db9c4704fed492aa10094bb1658"
+    },
+    "ground_truth/ground_truth.csv": {
+      "bytes": 5771,
+      "rows": 26,
+      "sha256": "2d531f79a8c4f264eb28fe2a3c0e2b78b7c5be24ac1a97e9ab80f361c3543738"
+    },
+    "ground_truth/ground_truth.json": {
+      "bytes": 12663,
+      "rows": 26,
+      "sha256": "3cf8a6885bfa6af9e67977c934e4365ea6477c7addaf12dc81cfc07a72e50867"
+    },
+    "json/BOMLine.json": {
+      "bytes": 14722,
+      "rows": 174,
+      "sha256": "4b2b2d24b348521ec3a161d2fd05136f218167138360ea8e90efd6cdfcfb70a9"
+    },
+    "json/BillOfMaterial.json": {
+      "bytes": 9949,
+      "rows": 60,
+      "sha256": "ee97f278fe56f40fa88df80563f054726ffdfb77bc82ae47726d9fc699ea8aa8"
+    },
+    "json/Carrier.json": {
+      "bytes": 788,
+      "rows": 8,
+      "sha256": "13007530c752e519bd0f57953304d5dbee79e5276287badb1c7d62cfe638b7d0"
+    },
+    "json/DataQualityFinding.json": {
+      "bytes": 7152,
+      "rows": 24,
+      "sha256": "8aa03ebd3bc4b93958aa35e89d8561fd3b7b7bfec2f46ea97489e52c8f75ded4"
+    },
+    "json/ForecastDemand.json": {
+      "bytes": 9707901,
+      "rows": 45864,
+      "sha256": "25c6ada9fa130a1ced42b4fc3c0635f4287e7bcde9140edc01284459b226f9c6"
+    },
+    "json/Inventory.json": {
+      "bytes": 215022,
+      "rows": 882,
+      "sha256": "fe13a0dd87ee4db0b5a44172b6ff2686c36247e31058bb05b9bfe2f40757390d"
+    },
+    "json/InventoryEvent.json": {
+      "bytes": 11343,
+      "rows": 60,
+      "sha256": "05f46695c62a1303c3b3cf7f5ba02098755cb763943b36898cb2afde6bfd6f17"
+    },
+    "json/LeadTime.json": {
+      "bytes": 108735,
+      "rows": 427,
+      "sha256": "a970e58d7dc6adf85f6882361887e5785d1b95c4c5796d8d61c81917061f7c05"
+    },
+    "json/Location.json": {
+      "bytes": 1864,
+      "rows": 10,
+      "sha256": "6b5526f421007e8a0c1a28528fcadee122aaf0dea61193c13ada3caa9423a627"
+    },
+    "json/MitigationEvent.json": {
+      "bytes": 89208,
+      "rows": 446,
+      "sha256": "5acb3890749a5e79213bcadd3d82d867ceb34e5f9edb3dacd809466fabe38de2"
+    },
+    "json/MitigationOption.json": {
+      "bytes": 293587,
+      "rows": 414,
+      "sha256": "7241f834a48475ed5d0125e4bac8f8187305dd1e96876368ff39e31c44c2dafd"
+    },
+    "json/PlanRun.json": {
+      "bytes": 175,
+      "rows": 1,
+      "sha256": "257bbbbc6a0b95d3b8a76f472081473a25c73680c07dea40427b999998c66a43"
+    },
+    "json/ProductionCapacity.json": {
+      "bytes": 30110,
+      "rows": 208,
+      "sha256": "65bfea45e98f2b4931e9df28241f5df5b34032e7240f0ba0cb7d547f327df23a"
+    },
+    "json/ProductionPlan.json": {
+      "bytes": 670120,
+      "rows": 2652,
+      "sha256": "244bdc34848fc51fbd8adc1944120dcc04e69cf70f1ab89a12c95100bd9a0e66"
+    },
+    "json/ProductionPlanEvent.json": {
+      "bytes": 480609,
+      "rows": 3108,
+      "sha256": "2870deb1489d39da4f6ad1954994839de37da1b3cc724c16364323d6124d9554"
+    },
+    "json/ProjectedBalance.json": {
+      "bytes": 13632620,
+      "rows": 45864,
+      "sha256": "31307d83dfc9afca26e9ea07a6089cb56e6c5a93d72c246bb9ffe707782fa61a"
+    },
+    "json/PurchaseOrder.json": {
+      "bytes": 436730,
+      "rows": 1000,
+      "sha256": "837c85f22be2bb59bbb1829fe69837d6f8ff2caceea4d6cbce0000fc30afe3c7"
+    },
+    "json/PurchaseOrderEvent.json": {
+      "bytes": 292511,
+      "rows": 1425,
+      "sha256": "52b6aae24c7bb6014fd0cdc4256b9132eb819dc66ec25251d9cd158647bcc1cf"
+    },
+    "json/SKU.json": {
+      "bytes": 85112,
+      "rows": 300,
+      "sha256": "fd2da66465cf5653a0ac2c8ad774c2ede336edcf3cc974c41ace9fd56c8d4d4c"
+    },
+    "json/SKULocation.json": {
+      "bytes": 112538,
+      "rows": 900,
+      "sha256": "087912339aefbafc8be747af41d326ba51962a4dd251b37b556f136a0ff4d4b1"
+    },
+    "json/SKUSubstitute.json": {
+      "bytes": 8990,
+      "rows": 37,
+      "sha256": "a1b1932393baa50b790abf785b85f7c1a0de970e0dc823746b367bafd19e7276"
+    },
+    "json/SKUSupplier.json": {
+      "bytes": 66452,
+      "rows": 406,
+      "sha256": "a02e075b4ade271d6be8a7ba8d2e860431e17f1f0a418248cd9977ff3947e3d3"
+    },
+    "json/Shortage.json": {
+      "bytes": 41342,
+      "rows": 92,
+      "sha256": "347c0c5585e1e5d13347735d553b418012cff9312731d5cad2f230df415071cb"
+    },
+    "json/ShortageCause.json": {
+      "bytes": 22440,
+      "rows": 96,
+      "sha256": "c83e753e99cea3a415b89c289a231dad550388c49e2620d4eb8c5fe2a324853b"
+    },
+    "json/ShortageEvent.json": {
+      "bytes": 55994,
+      "rows": 276,
+      "sha256": "4c2b72fcf0c3a85956dcd0ca83cd5a966e49920f9a4f08e9fb83bbe9957d3567"
+    },
+    "json/Supplier.json": {
+      "bytes": 12699,
+      "rows": 50,
+      "sha256": "9918a6d7b11da2568804be4c353ae4587b985a3e43ea4ee72c4b5f573cebda35"
+    },
+    "json/SupplierCapacity.json": {
+      "bytes": 24956,
+      "rows": 105,
+      "sha256": "145caa2f9d01118001eb6db5d7b6ed06fb92a954b5dc86c21f19230a486442ec"
+    },
+    "json/SupplierCapacityLedger.json": {
+      "bytes": 189621,
+      "rows": 838,
+      "sha256": "a7bceb7161481e06233e32e7f4b8edd90679507c4a0eebbd40cb02ea1f59d009"
+    },
+    "json/TransportEvent.json": {
+      "bytes": 34595,
+      "rows": 179,
+      "sha256": "6e253fbfddf5a05b4d8e7aa720326f4f19b69e1af62e7a0a941f3a2dc80354ef"
+    },
+    "json/UnitOfMeasure.json": {
+      "bytes": 230,
+      "rows": 4,
+      "sha256": "77474e1f4bb33436a938dc834b749256922a4a238fb0d3c9467bbb675a9df540"
+    },
+    "json/UoMConversion.json": {
+      "bytes": 26032,
+      "rows": 240,
+      "sha256": "4273fdf427fe1c950a04ab3277118c5900e39a35cd7bf819507ae2efceb50c85"
+    },
+    "json/WorkCenter.json": {
+      "bytes": 422,
+      "rows": 4,
+      "sha256": "cfcba08406c5fac562507c9467149c1faa21975065377e128c061cf5f36e7319"
+    },
+    "sql/schema.sql": {
+      "bytes": 15240,
+      "sha256": "f1e9591869eac10b2974321dd38cd25368b8a442dee7e25052d9d35a9a2246d2"
+    },
+    "sql/seed_BOMLine.sql": {
+      "bytes": 7218,
+      "rows": 174,
+      "sha256": "8db4f3aa3d7fabaed49c73d632ec5cbe0fa54f60537bbb025376aefe1804a6ac"
+    },
+    "sql/seed_BillOfMaterial.sql": {
+      "bytes": 4044,
+      "rows": 60,
+      "sha256": "35257438249cc33c8fe025af76522829fc8d2390ec0bf8c0172d26872e1c7095"
+    },
+    "sql/seed_Carrier.sql": {
+      "bytes": 481,
+      "rows": 8,
+      "sha256": "9887cacb4b849a74871ce28e1cf2ca40568125a8120ef914e316c048a66af441"
+    },
+    "sql/seed_DataQualityFinding.sql": {
+      "bytes": 5084,
+      "rows": 24,
+      "sha256": "68240d0d24e3eab16837620231fc739f64cfdec690d76eabb201bbeea4873b4c"
+    },
+    "sql/seed_ForecastDemand.sql": {
+      "bytes": 5048494,
+      "rows": 45864,
+      "sha256": "e52ee03f47d9aeb47ab2c579e1f3bb349a0c2671632a606a7a5383795b8a9568"
+    },
+    "sql/seed_Inventory.sql": {
+      "bytes": 88404,
+      "rows": 882,
+      "sha256": "79ac0eb766e2f7cfea17a7df906f095346d2d508895eb03d72ef0dc40b52cde5"
+    },
+    "sql/seed_InventoryEvent.sql": {
+      "bytes": 6733,
+      "rows": 60,
+      "sha256": "fe036ddc2d4aed42322544f18e45cfd7dac7d3abf574347032e548e56b56c5cc"
+    },
+    "sql/seed_LeadTime.sql": {
+      "bytes": 38496,
+      "rows": 427,
+      "sha256": "6cafe0b681703d79270081ee265463e05d1f930f2164c720342917c24e4775b7"
+    },
+    "sql/seed_Location.sql": {
+      "bytes": 1027,
+      "rows": 10,
+      "sha256": "fc2c669e5b5609bb7f1a9b6862ea5176826a6137a8f210da018b2cd99d8af6da"
+    },
+    "sql/seed_MitigationEvent.sql": {
+      "bytes": 52768,
+      "rows": 446,
+      "sha256": "ddd1259b177bd03beae6e935f61e7d665c50974d24008133e72a39f140bf4e75"
+    },
+    "sql/seed_MitigationOption.sql": {
+      "bytes": 112063,
+      "rows": 414,
+      "sha256": "172df5ec12548e905a4ec19b05ba14bead5581e2bc96c3412b6c8470b0390f56"
+    },
+    "sql/seed_PlanRun.sql": {
+      "bytes": 219,
+      "rows": 1,
+      "sha256": "e362af0abc821feca2e75c093488e31577dba6cab1327bf308a8befa6f5f77a7"
+    },
+    "sql/seed_ProductionCapacity.sql": {
+      "bytes": 14429,
+      "rows": 208,
+      "sha256": "a09178c5c066d915937ff13724949f38999e3f86deb6264c0b985f4e1c9242f4"
+    },
+    "sql/seed_ProductionPlan.sql": {
+      "bytes": 329901,
+      "rows": 2652,
+      "sha256": "8f075be940d42c5ba7c3cf9eb3b6ae69ae0cafca34eed3baa0306c084fac07ce"
+    },
+    "sql/seed_ProductionPlanEvent.sql": {
+      "bytes": 239107,
+      "rows": 3108,
+      "sha256": "a1bd9c6c9515f573e7b8fa7448ae614a214beb5ea56edf98e24159e4c842ddcf"
+    },
+    "sql/seed_ProjectedBalance.sql": {
+      "bytes": 4301110,
+      "rows": 45864,
+      "sha256": "472acf11a130d91040f81d89f2f805a8c589cbf24c2536f6a9ba1011e23e9595"
+    },
+    "sql/seed_PurchaseOrder.sql": {
+      "bytes": 211786,
+      "rows": 1000,
+      "sha256": "55ce1ba6016c1030eb8711e112bc0a21706c654a52a5979bd44be44d9296528d"
+    },
+    "sql/seed_PurchaseOrderEvent.sql": {
+      "bytes": 147642,
+      "rows": 1425,
+      "sha256": "20ba00afdf2ec76728f8604f7d0673fe28a2856ff7c140240ecf21c511f77554"
+    },
+    "sql/seed_SKU.sql": {
+      "bytes": 39338,
+      "rows": 300,
+      "sha256": "ce8ed9e0d133f6eb6c5789ef9c52d0ebf611ea7a30f7a6667323e88933293e4f"
+    },
+    "sql/seed_SKULocation.sql": {
+      "bytes": 51560,
+      "rows": 900,
+      "sha256": "f641ec8fe1baf3fcba3f444d17088b9370f9d226f0f8adca77e821c7ea3a666f"
+    },
+    "sql/seed_SKUSubstitute.sql": {
+      "bytes": 4044,
+      "rows": 37,
+      "sha256": "4cc091916642eb67c3395ae6723e3fda90136f0bbd1ad89f6444f1c4dee4e12b"
+    },
+    "sql/seed_SKUSupplier.sql": {
+      "bytes": 29286,
+      "rows": 406,
+      "sha256": "cc1b04138815c68fcabca6777d93e6c948a223230a285833d097648e6aeeb6be"
+    },
+    "sql/seed_Shortage.sql": {
+      "bytes": 19505,
+      "rows": 92,
+      "sha256": "166cd3a2583e6b0d46619db21140495bb0aeacdfc5770a731e27332293b747a2"
+    },
+    "sql/seed_ShortageCause.sql": {
+      "bytes": 13742,
+      "rows": 96,
+      "sha256": "2db203307f8e6510e595e2ca37f3e91955058a16e6bb4552cb5719e85687f066"
+    },
+    "sql/seed_ShortageEvent.sql": {
+      "bytes": 34042,
+      "rows": 276,
+      "sha256": "0a7cbea232858eaaa6dd2e3ba37748c38d6cb7ddd34b958f4ac0574682a2fdd7"
+    },
+    "sql/seed_Supplier.sql": {
+      "bytes": 6135,
+      "rows": 50,
+      "sha256": "8cb544d1beb693ad7eb89655574bf2352eefd4bafd37bc5db19f3fa5d7d64d8b"
+    },
+    "sql/seed_SupplierCapacity.sql": {
+      "bytes": 9829,
+      "rows": 105,
+      "sha256": "99fca8219f0e6e7a3dab6488ec89731dd7fd8d84a59cc151d4eb477589548207"
+    },
+    "sql/seed_SupplierCapacityLedger.sql": {
+      "bytes": 78694,
+      "rows": 838,
+      "sha256": "cd1d3029cadd69ef734022af1cea740a78bd948ef618316baab8b0d8a8f3372b"
+    },
+    "sql/seed_TransportEvent.sql": {
+      "bytes": 18626,
+      "rows": 179,
+      "sha256": "9405dc2c6afc590272e1355d4089a94cf52ab80b7e9060cdf2329937064ce796"
+    },
+    "sql/seed_UnitOfMeasure.sql": {
+      "bytes": 177,
+      "rows": 4,
+      "sha256": "4a6db6640add49763757fc8fc1eef3b6556ff9d80ea225215cc1d698ed05dd1e"
+    },
+    "sql/seed_UoMConversion.sql": {
+      "bytes": 15085,
+      "rows": 240,
+      "sha256": "27f1aa3c638a05f584f91786555a7d3001bed3c3f71a7f24a48c17a9a7f0cfe4"
+    },
+    "sql/seed_WorkCenter.sql": {
+      "bytes": 296,
+      "rows": 4,
+      "sha256": "4e49a1f3ed319d0a2cc1b1147070524c4184e175d713aa65b81502c50f4bb583"
+    }
+  },
+  "generation_metadata": {
+    "actual_assortment_density": 0.3,
+    "baseline_checks_clean": 677,
+    "n_families": 12,
+    "n_pairs_active": 882,
+    "n_pairs_inactive": 18,
+    "n_pairs_total": 900,
+    "n_plants": 2
+  },
+  "generator_command": "python -m oryva generate --profile starter --out data/starter",
+  "ground_truth_rows": 26,
+  "parameters": {
+    "as_of_date": "2025-12-29",
+    "assortment_density": 0.3,
+    "edge_cases": {
+      "per_type": 4
+    },
+    "inactive_pair_share": 0.02,
+    "json_max_rows": 200000,
+    "location_mix": {
+      "dc": 0.2,
+      "plant": 0.2
+    },
+    "n_families": 12,
+    "n_locations": 10,
+    "n_purchase_orders": 1000,
+    "n_skus": 300,
+    "n_suppliers": 50,
+    "n_weeks": 52,
+    "name": "starter",
+    "scenario": {
+      "cancelled_po_share": 0.02,
+      "constrained_supplier_share": 0.12,
+      "constrained_work_center_share": 0.25,
+      "delay_share": 0.35,
+      "early_arrival_share": 0.3,
+      "historic_po_share": 0.06,
+      "promo_pair_share": 0.08,
+      "spike_pair_share": 0.06,
+      "substitute_share": 0.15,
+      "tight_pair_share": 0.03
+    },
+    "seed": 20261022,
+    "sku_mix": {
+      "component": 0.2,
+      "make": 0.2
+    }
+  },
+  "profile": "starter",
+  "project": "ORYVA NEXUS",
+  "seed": 20261022,
+  "table_row_counts": {
+    "BOMLine": 174,
+    "BillOfMaterial": 60,
+    "Carrier": 8,
+    "DataQualityFinding": 24,
+    "ForecastDemand": 45864,
+    "Inventory": 882,
+    "InventoryEvent": 60,
+    "LeadTime": 427,
+    "Location": 10,
+    "MitigationEvent": 446,
+    "MitigationOption": 414,
+    "PlanRun": 1,
+    "ProductionCapacity": 208,
+    "ProductionPlan": 2652,
+    "ProductionPlanEvent": 3108,
+    "ProjectedBalance": 45864,
+    "PurchaseOrder": 1000,
+    "PurchaseOrderEvent": 1425,
+    "SKU": 300,
+    "SKULocation": 900,
+    "SKUSubstitute": 37,
+    "SKUSupplier": 406,
+    "Shortage": 92,
+    "ShortageCause": 96,
+    "ShortageEvent": 276,
+    "Supplier": 50,
+    "SupplierCapacity": 105,
+    "SupplierCapacityLedger": 838,
+    "TransportEvent": 179,
+    "UnitOfMeasure": 4,
+    "UoMConversion": 240,
+    "WorkCenter": 4
+  },
+  "validation": {
+    "checks": 682,
+    "edge_cases_detected_perfectly": true,
+    "unexpected_failures": 0
+  }
+}
